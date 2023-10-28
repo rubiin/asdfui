@@ -1,31 +1,29 @@
 import { Select } from "@inkjs/ui";
-import { Text, Box, useFocus } from "ink";
+import { Box, useFocus } from "ink";
 import React, { useEffect, useState } from "react";
-import { IPlugin, getAllPlugins, getBorderColorOnFocus } from "../util.js";
+import { IPlugin, getAllPlugins, getBorderColorOnFocus } from "../asdf.js";
+import Title from "./title.js";
 
+function setValue(){
 
-
-
+}
 
 export function Plugins() {
-	const { isFocused } = useFocus({id: "plugin"}) ;
-	const [plugins,setPlugins] = useState<IPlugin[]>([])
-	const [value, setValue] = useState<string | undefined>();
+	const { isFocused } = useFocus({ id: "plugin" });
+	const [plugins, setPlugins] = useState<IPlugin[]>([]);
 
 	useEffect(() => {
 		// declare the data fetching function
 		const fetchData = async () => {
-			const data = await getAllPlugins()
-			setPlugins(data)
-
-		}
+			const data = await getAllPlugins();
+			setPlugins(data);
+		};
 
 		// call the function
 		fetchData()
 			// make sure to catch any error
 			.catch(console.error);
-	}, [])
-
+	}, []);
 
 	return (
 		<Box
@@ -36,17 +34,8 @@ export function Plugins() {
 			minHeight={20}
 			paddingLeft={2}
 		>
-			<Box alignSelf="center" marginTop={-1}>
-				<Text bold>Plugins </Text>
-			</Box>
-			<Select
-				isDisabled={!isFocused}
-				visibleOptionCount={10}
-				options={plugins}
-				onChange={setValue}
-			/>
-
-			<Text>Selected value: {value}</Text>
+			<Title title="Plugins" color={getBorderColorOnFocus(isFocused)}/>
+			<Select isDisabled={!isFocused} visibleOptionCount={10} options={plugins} onChange={setValue} />
 		</Box>
 	);
 }

@@ -5,17 +5,14 @@ import { Versions } from "./components/versions.js";
 import { useFocusManager } from "ink";
 
 export default function App() {
-
-
-	const {focus} = useFocusManager();
-
+	const { focus } = useFocusManager();
 
 	useEffect(() => {
-		focus('plugin');
-	}, [])
+		focus("plugin");
+	}, []);
 
 	return (
-		<Layout width={50}>
+		<Layout width={50} borderColor="white">
 			<Plugins />
 			<Versions />
 		</Layout>
