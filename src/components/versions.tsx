@@ -1,48 +1,27 @@
 import { Select } from "@inkjs/ui";
-import { Text, Box, useFocus, useInput } from "ink";
-import React, { useState } from "react";
-import { getBorderColorOnFocus } from "../asdf.js";
+import { Box, useFocus, useInput } from "ink";
+import React, { useEffect, useState } from "react";
+import { IPlugin, getBorderColorOnFocus, getToolVersions } from "../asdf.js";
+import { usePluginsStore } from "../plugin.store.js";
 import Title from "./title.js";
 
 export function Versions() {
-	const { isFocused } = useFocus({ id: "version" });
-	const [value, setValue] = useState<string | undefined>();
+	const { isFocused } = useFocus({ id: "versions" });
+	const [_value, setValue] = useState<string | undefined>();
+	const currentlySelected = usePluginsStore((state) => state.currentlySelected);
 
-	const options = [
-		{
-			label: "Red",
+	const [versions, setVersions] = useState<IPlugin[]>([]);
 
-			value: "red",
-		},
-		{
-			label: "Green",
-			value: "green",
-		},
-		{
-			label: "Yellow",
-			value: "yellow",
-		},
-		{
-			label: "Blue",
-			value: "blue",
-		},
-		{
-			label: "Magenta",
-			value: "magenta",
-		},
-		{
-			label: "Cyan",
-			value: "cyan",
-		},
-		{
-			label: "White",
-			value: "white",
-		},
-		{
-			label: "Black",
-			value: "Black",
-		},
-	]
+	useEffect(() => {
+		// declare the data fetching function
+		const fetchToolsVersionsData = async () => {
+			const data = await getToolVersions(currentlySelected.label);
+			setVersions(data);
+		};
+
+		// call the function
+		fetchToolsVersionsData();
+	}, [currentlySelected.label]);
 
 	useInput((input) => {
 		if (isFocused) {
@@ -64,19 +43,12 @@ export function Versions() {
 			borderStyle="round"
 			borderColor={getBorderColorOnFocus(isFocused)}
 			flexDirection="column"
-			width="50%"
+			width="70%"
 			minHeight={20}
-			paddingLeft={2}
+			paddingLeft={4}
 		>
-			<Title title="Versions" color={getBorderColorOnFocus(isFocused)}/>
-			<Select
-				isDisabled={!isFocused}
-				visibleOptionCount={10}
-				options={options}
-				onChange={setValue}
-			/>
-
-			<Text>Selected value: {value}</Text>
+			<Title title="Versions" color={getBorderColorOnFocus(isFocused)} />
+			<Select isDisabled={!isFocused} visibleOptionCount={20} options={versions} onChange={setValue} />
 		</Box>
 	);
 }

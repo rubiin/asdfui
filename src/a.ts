@@ -1,4 +1,8 @@
 import { $ } from "execa";
 
-const branch = await $`asdf list all golang`;
-console.log({ branch });
+try {
+	const res = await $`asdf list all nodejs`;
+	console.log(res);
+} catch (error) {
+	console.log(error);
+}

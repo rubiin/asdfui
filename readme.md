@@ -23,3 +23,8 @@ $ asdfui --help
     $ asdfui --name=Jane
     Hello, Jane
 ```
+
+TODO:
+- [x] add quit command
+- [x] add info tab
+- [] mark installed versions with installed
