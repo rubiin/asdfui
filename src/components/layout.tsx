@@ -12,7 +12,7 @@ interface LayoutProps {
 export const Layout: React.FC<LayoutProps> = ({ children, width, borderColor }) => {
 	const { exit } = useApp();
 
-	useInput((input) => {
+	useInput((input: string) => {
 		if (input === "q") {
 			exit();
 		}
