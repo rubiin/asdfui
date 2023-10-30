@@ -1,15 +1,12 @@
-import { Box } from "ink";
-import { useInput } from "ink";
-import { useApp } from "ink";
+import { Box, useApp, useInput } from "ink";
 import React from "react";
 
 interface LayoutProps {
 	children: React.ReactNode;
-	width: number;
 	borderColor?: string;
 }
 
-export const Layout: React.FC<LayoutProps> = ({ children, width, borderColor }) => {
+export const Layout: React.FC<LayoutProps> = ({ children, borderColor }) => {
 	const { exit } = useApp();
 
 	useInput((input: string) => {
@@ -19,8 +16,10 @@ export const Layout: React.FC<LayoutProps> = ({ children, width, borderColor }) 
 	});
 
 	return (
-		<Box borderStyle="round" borderColor={borderColor} width={width + "%"} minHeight={20}>
+		<Box width="100%" justifyContent="center">
+		<Box borderStyle="round" borderColor={borderColor} minHeight={20} width="90%">
 			{children}
+		</Box>
 		</Box>
 	);
 };
