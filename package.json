@@ -1,29 +1,28 @@
 {
 	"name": "asdfui",
-	"version": "0.1.4",
+	"version": "0.1.5",
 	"bin": "dist/cli.js",
 	"type": "module",
 	"description": "NestJS + MikroORM blog example with batteries included",
-  "author": {
-    "email": "roobin.bhandari@gmail.com",
-    "name": "Rubin Bhandari",
-    "url": "https://rubiin.vercel.app"
-  },
-  "license": "MIT",
-  "homepage": "https://github.com/rubiin/asdfui#readme",
-  "repository": "https://github.com/rubiin/asdfui",
-  "bugs": "https://github.com/rubiin/asdfui/issues",
-  "keywords": [
-    "cli",
-    "asdf",
-    "node",
-    "nvm",
-    "n",
-    "asdfui",
-    "node.js",
-    "volta"
-
-  ],
+	"author": {
+		"email": "roobin.bhandari@gmail.com",
+		"name": "Rubin Bhandari",
+		"url": "https://rubiin.vercel.app"
+	},
+	"license": "MIT",
+	"homepage": "https://github.com/rubiin/asdfui#readme",
+	"repository": "https://github.com/rubiin/asdfui",
+	"bugs": "https://github.com/rubiin/asdfui/issues",
+	"keywords": [
+		"cli",
+		"asdf",
+		"node",
+		"nvm",
+		"n",
+		"asdfui",
+		"node.js",
+		"volta"
+	],
 	"engines": {
 		"node": ">=18"
 	},
