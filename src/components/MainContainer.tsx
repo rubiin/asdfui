@@ -6,7 +6,7 @@ interface LayoutProps {
 	borderColor?: string;
 }
 
-export const Layout: React.FC<LayoutProps> = ({ children, borderColor }) => {
+export const MainContainer: React.FC<LayoutProps> = ({ children, borderColor }) => {
 	const { exit } = useApp();
 
 	useInput((input: string) => {
@@ -16,10 +16,8 @@ export const Layout: React.FC<LayoutProps> = ({ children, borderColor }) => {
 	});
 
 	return (
-		<Box width="100%" justifyContent="center">
-		<Box borderStyle="round" borderColor={borderColor} minHeight={20} gap={1}>
+		<Box borderStyle="round"  width="100%" borderColor={borderColor} minHeight={20} gap={1}>
 			{children}
-		</Box>
 		</Box>
 	);
 };

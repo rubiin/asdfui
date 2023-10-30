@@ -2,6 +2,7 @@ import { $ } from "execa";
 
 import { Option } from "@inkjs/ui";
 import { formatPluginData } from "./helpers.js";
+import { GlobalVersions } from "../types.js";
 
 export const getAllPlugins = async (): Promise<Option[]> => {
 	try {
@@ -33,18 +34,15 @@ export const unInstallToolVersion = async (name: string, version: string): Promi
 
 
 
-export const getGlobalToolVersions = async (): Promise<any> => {
+export const getGlobalToolVersions = async (): Promise<GlobalVersions[]> => {
 	try {
-		const { stdout } = await $`asdf list current`;
+		const { stdout } = await $`asdf current`;
 		const text = stdout.trim()
 
 		const lines = text.trim().split('\n');
 		const extractedFields = lines.map(line => {
 			const fields = line.trim().split(/\s+/);
-			if (fields.length >= 2) {
-				return {name:fields[0], version: fields[1]};
-			}
-			return null; // Handle lines with fewer than 2 fields
+			return { name:fields[0]!, version: fields[1]!};
 		});
 		return extractedFields
 	} catch (error) {

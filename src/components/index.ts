@@ -1,5 +1,5 @@
 export * from './About.js';
-export * from './Layout.js';
+export * from './MainContainer.js';
 export * from './Loader.js';
 export * from './Header.js';
 export * from './Plugins.js';

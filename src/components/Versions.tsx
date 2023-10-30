@@ -5,7 +5,7 @@ import { usePluginsStore } from "../stores/plugin.store.js";
 import { NotFound, Title } from "./index.js";
 
 import { useVersionsStore } from "../stores/version.store.js";
-import { getBorderColorOnFocus } from "../utils/helpers.js";
+import { getBorderColorOnFocus, totalNumber } from "../utils/helpers.js";
 import { Loader } from "./Loader.js";
 
 export function Versions() {
@@ -41,9 +41,9 @@ export function Versions() {
 			minHeight={20}
 			paddingLeft={4}
 		>
-			<Title title="Versions" color={getBorderColorOnFocus(isFocused)} />
+			<Title title={totalNumber("Versions",versions.length)} color={getBorderColorOnFocus(isFocused)} />
 			{loading && <Loader text={`Fetching available ${currentlySelected.label} versions`} />}
-			{!loading && <Select isDisabled={!isFocused} visibleOptionCount={20} options={versions} onChange={setValue} />}
+			{!loading && <Select isDisabled={!isFocused} visibleOptionCount={38} options={versions} onChange={setValue} />}
 			{!loading && versions.length === 0 && <NotFound text={`No versions found for plugin ${currentlySelected.label}`}/>}
 		</Box>
 	);

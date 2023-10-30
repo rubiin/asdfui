@@ -3,17 +3,17 @@ import { getGlobalToolVersions } from "../utils/asdf.js";
 import { GlobalVersions } from "../types.js";
 
 
-interface GlobalState {
+interface GlobalVersionsState {
 	versions: GlobalVersions[];
-	getAllGlobals: (by: string) => void;
+	getAllGlobalVersions: () => void;
 	loading: boolean,
 }
 
-export const useVersionsStore = create<GlobalState>()((set) => ({
+export const useGlobalsStore = create<GlobalVersionsState>()((set) => ({
 	loading: false,
 
 	versions: [],
-	getAllGlobals: async () => {
+	getAllGlobalVersions: async () => {
 		set((state) => ({ loading: !state.loading}))
 		const response = await getGlobalToolVersions();
 		set({ versions: response });

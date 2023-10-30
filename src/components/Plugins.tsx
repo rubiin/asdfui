@@ -2,7 +2,7 @@ import { Select } from "@inkjs/ui";
 import { Box, useFocus } from "ink";
 import React, { useEffect } from "react";
 import { usePluginsStore } from "../stores/plugin.store.js";
-import { getBorderColorOnFocus } from "../utils/helpers.js";
+import { getBorderColorOnFocus, totalNumber } from "../utils/helpers.js";
 import { Loader, NotFound, Title } from "./index.js";
 
 export function Plugins() {
@@ -35,11 +35,10 @@ export function Plugins() {
 			borderStyle="double"
 			borderColor={getBorderColorOnFocus(isFocused)}
 			flexDirection="column"
-			width="50%"
 			minHeight={20}
 			paddingLeft={2}
 		>
-			<Title title="Plugins" color={getBorderColorOnFocus(isFocused)} />
+			<Title title={totalNumber("Plugins",plugins.length)} color={getBorderColorOnFocus(isFocused)} />
 			{loading && <Loader text={"Fetching installed asdf plugins"} />}
 			{!loading && <Select isDisabled={!isFocused} visibleOptionCount={10} options={plugins} onChange={setValue} />}
 			{!loading && plugins.length === 0 && <NotFound text={"No installed plugins found"} />}

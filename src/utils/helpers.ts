@@ -8,3 +8,8 @@ export function formatPluginData(data: string) {
 		value: element,
 	}));
 }
+
+export function totalNumber(start:string, total: number)
+{
+	 return `${start} (${total})`
+}
