@@ -1,5 +1,5 @@
 import { create } from "zustand";
-import  {getAllPlugins } from "../asdf.js";
+import  {getAllPlugins } from "../utils/asdf.js";
 import { Option } from "@inkjs/ui";
 
 interface PluginState {

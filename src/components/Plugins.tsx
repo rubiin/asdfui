@@ -1,7 +1,7 @@
 import { Select } from "@inkjs/ui";
 import { Box, useFocus } from "ink";
 import React, { useEffect, useState } from "react";
-import { getBorderColorOnFocus } from "../asdf.js";
+import { getBorderColorOnFocus } from "../utils/helpers.js";
 import { usePluginsStore } from "../stores/plugin.store.js";
 import Title from "./Title.js";
 import { Loader } from "./Loader.js";

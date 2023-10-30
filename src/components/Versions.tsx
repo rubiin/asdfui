@@ -1,12 +1,13 @@
 import { Select } from "@inkjs/ui";
 import { Box, useFocus, useInput } from "ink";
 import React, { useEffect, useState } from "react";
-import { getBorderColorOnFocus, getToolVersions } from "../asdf.js";
+import { getToolVersions } from "../utils/asdf.js";
 import { usePluginsStore } from "../stores/plugin.store.js";
 import Title from "./Title.js";
 import { Option } from "@inkjs/ui";
 
 import { Loader } from "./Loader.js";
+import { getBorderColorOnFocus } from "../utils/helpers.js";
 
 export function Versions() {
 	const { isFocused } = useFocus({ id: "versions" });

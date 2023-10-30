@@ -19,3 +19,5 @@ TODO:
 - [x] add quit command
 - [x] add info tab
 - [] mark installed versions with installed
+-	[x] add spinner
+- [] error handling

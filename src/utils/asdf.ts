@@ -1,15 +1,8 @@
 import { $ } from "execa";
 
 import { Option } from "@inkjs/ui";
+import { formatPluginData } from "./helpers.js";
 
-export const getBorderColorOnFocus = (isFocused: boolean) => (isFocused ? "green" : "white");
-
-function formatPluginData(data: string) {
-	return data.split("\n").map((element) => ({
-		label: element,
-		value: element,
-	}));
-}
 
 export const getAllPlugins = async (): Promise<Option[]> => {
 	const { stdout } = await $`asdf plugin list`;

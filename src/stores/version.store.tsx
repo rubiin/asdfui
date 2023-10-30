@@ -1,5 +1,5 @@
 import { create } from "zustand";
-import { getToolVersions } from "../asdf.js";
+import { getToolVersions } from "../utils/asdf.js";
 import { Option } from "@inkjs/ui";
 
 interface VersionState {
