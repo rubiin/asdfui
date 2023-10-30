@@ -6,18 +6,23 @@ import { usePluginsStore } from "../stores/plugin.store.js";
 import Title from "./Title.js";
 import { Option } from "@inkjs/ui";
 
+import { Loader } from "./Loader.js";
+
 export function Versions() {
 	const { isFocused } = useFocus({ id: "versions" });
 	const [_value, setValue] = useState<string | undefined>();
+  const [loading, setLoading] = useState(false);
 	const currentlySelected = usePluginsStore((state) => state.currentlySelected);
 
 	const [versions, setVersions] = useState<Option[]>([]);
 
 	useEffect(() => {
 		// declare the data fetching function
+		setLoading(true)
 		const fetchToolsVersionsData = async () => {
 			const data = await getToolVersions(currentlySelected.label);
 			setVersions(data);
+			setLoading(false)
 		};
 
 		// call the function
@@ -49,6 +54,7 @@ export function Versions() {
 			paddingLeft={4}
 		>
 			<Title title="Versions" color={getBorderColorOnFocus(isFocused)} />
+			{loading && <Loader text={`Fetch available ${currentlySelected.label} versions`}/>}
 			<Select isDisabled={!isFocused} visibleOptionCount={20} options={versions} onChange={setValue} />
 		</Box>
 	);

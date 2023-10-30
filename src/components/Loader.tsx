@@ -1,14 +1,11 @@
-import React from "react";
-import { Text } from "ink";
 import { Spinner } from "@inkjs/ui";
+import { Box } from "ink";
+import React from "react";
 
-export const Loader = () => {
+export const Loader = ({text}: {text: string}) => {
 	return (
-		<Text>
-			<Text color="green">
-				<Spinner type="dots" />
-			</Text>
-			{" Loading"}
-		</Text>
+		<Box padding={2}>
+				<Spinner type="dots" label={text} />
+		</Box>
 	);
 };
