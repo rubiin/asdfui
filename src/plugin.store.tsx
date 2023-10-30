@@ -1,11 +1,12 @@
 import { create } from "zustand";
-import { IPlugin, getAllPlugins } from "./asdf.js";
+import  {getAllPlugins } from "./asdf.js";
+import { Option } from "@inkjs/ui";
 
 interface PluginState {
-	plugins: IPlugin[];
-	currentlySelected: IPlugin;
+	plugins: Option[];
+	currentlySelected: Option;
 	getAllLocalPlugins: () => void;
-	selectPlugin: (plugin: IPlugin) => void;
+	selectPlugin: (plugin: Option) => void;
 }
 
 export const usePluginsStore = create<PluginState>()((set) => ({

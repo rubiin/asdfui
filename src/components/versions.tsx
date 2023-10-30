@@ -1,16 +1,17 @@
 import { Select } from "@inkjs/ui";
 import { Box, useFocus, useInput } from "ink";
 import React, { useEffect, useState } from "react";
-import { IPlugin, getBorderColorOnFocus, getToolVersions } from "../asdf.js";
+import { getBorderColorOnFocus, getToolVersions } from "../asdf.js";
 import { usePluginsStore } from "../plugin.store.js";
 import Title from "./title.js";
+import { Option } from "@inkjs/ui";
 
 export function Versions() {
 	const { isFocused } = useFocus({ id: "versions" });
 	const [_value, setValue] = useState<string | undefined>();
 	const currentlySelected = usePluginsStore((state) => state.currentlySelected);
 
-	const [versions, setVersions] = useState<IPlugin[]>([]);
+	const [versions, setVersions] = useState<Option[]>([]);
 
 	useEffect(() => {
 		// declare the data fetching function

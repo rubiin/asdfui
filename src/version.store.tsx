@@ -1,8 +1,9 @@
 import { create } from "zustand";
-import { IPlugin as IVersion, getToolVersions } from "./asdf.js";
+import { getToolVersions } from "./asdf.js";
+import { Option } from "@inkjs/ui";
 
 interface VersionState {
-	versions: IVersion[];
+	versions: Option[];
 	getAlVersions: (by: string) => void;
 }
 
