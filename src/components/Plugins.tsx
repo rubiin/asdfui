@@ -1,13 +1,15 @@
 import { Select } from "@inkjs/ui";
 import { Box, useFocus } from "ink";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { getBorderColorOnFocus } from "../asdf.js";
 import { usePluginsStore } from "../stores/plugin.store.js";
 import Title from "./Title.js";
+import { Loader } from "./Loader.js";
 
 export function Plugins() {
 	const { isFocused } = useFocus({ id: "plugins" });
 	const getAllLocalPlugins = usePluginsStore((state) => state.getAllLocalPlugins);
+	const [loading, setLoading] = useState(false);
 	const setSelectedPlugin = usePluginsStore((state) => state.selectPlugin);
 	const plugins = usePluginsStore((state) => state.plugins);
 
@@ -19,9 +21,11 @@ export function Plugins() {
 	}
 
 	useEffect(() => {
+		setLoading(true)
 		// declare the data fetching function
 		const fetchPluginsData = () => {
 			getAllLocalPlugins();
+			setLoading(false)
 		};
 
 		// call the function
@@ -38,7 +42,7 @@ export function Plugins() {
 			paddingLeft={2}
 		>
 			<Title title="Plugins" color={getBorderColorOnFocus(isFocused)} />
-
+			{loading && <Loader text={'Fetching installed asdf plugins'}/>}
 			<Select isDisabled={!isFocused} visibleOptionCount={10} options={plugins} onChange={setValue} />
 		</Box>
 	);

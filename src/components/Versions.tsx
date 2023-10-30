@@ -54,7 +54,7 @@ export function Versions() {
 			paddingLeft={4}
 		>
 			<Title title="Versions" color={getBorderColorOnFocus(isFocused)} />
-			{loading && <Loader text={`Fetch available ${currentlySelected.label} versions`}/>}
+			{loading && <Loader text={`Fetching available ${currentlySelected.label} versions`}/>}
 			<Select isDisabled={!isFocused} visibleOptionCount={20} options={versions} onChange={setValue} />
 		</Box>
 	);
