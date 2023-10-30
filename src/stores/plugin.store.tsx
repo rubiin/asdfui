@@ -12,13 +12,18 @@ interface PluginState {
 export const usePluginsStore = create<PluginState>()((set) => ({
 	plugins: [],
 	currentlySelected: {
-		value: "golang",
-		label: "golang",
+		value: "",
+		label: "",
 	},
 	selectPlugin: (plugin) => set({ currentlySelected: plugin }),
 	getAllLocalPlugins: async () => {
 		const response = await getAllPlugins();
 		set({ plugins: response });
-		set({ currentlySelected: response[2] });
+		set({ currentlySelected: response.length > 0 ? response[0] :
+			{
+				value: "",
+				label: "",
+			},
+		});
 	},
 }));

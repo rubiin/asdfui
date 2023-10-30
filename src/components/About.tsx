@@ -2,7 +2,7 @@ import { Box, Text } from "ink";
 import Link from "ink-link";
 import React from "react";
 
-export function Info() {
+export function About() {
 	return (
 		<Box width="60%" minHeight={5} justifyContent="space-between" marginLeft={10}>
 			<Text color="blue" bold>

@@ -1,10 +1,9 @@
 import { Select } from "@inkjs/ui";
 import { Box, useFocus } from "ink";
 import React, { useEffect, useState } from "react";
-import { getBorderColorOnFocus } from "../utils/helpers.js";
 import { usePluginsStore } from "../stores/plugin.store.js";
-import Title from "./Title.js";
-import { Loader } from "./Loader.js";
+import { getBorderColorOnFocus } from "../utils/helpers.js";
+import { Loader, NotFound, Title } from "./index.js";
 
 export function Plugins() {
 	const { isFocused } = useFocus({ id: "plugins" });
@@ -21,11 +20,11 @@ export function Plugins() {
 	}
 
 	useEffect(() => {
-		setLoading(true)
+		setLoading(true);
 		// declare the data fetching function
 		const fetchPluginsData = () => {
 			getAllLocalPlugins();
-			setLoading(false)
+			setLoading(false);
 		};
 
 		// call the function
@@ -42,8 +41,9 @@ export function Plugins() {
 			paddingLeft={2}
 		>
 			<Title title="Plugins" color={getBorderColorOnFocus(isFocused)} />
-			{loading && <Loader text={'Fetching installed asdf plugins'}/>}
-			<Select isDisabled={!isFocused} visibleOptionCount={10} options={plugins} onChange={setValue} />
+			{loading && <Loader text={"Fetching installed asdf plugins"} />}
+			{!loading && <Select isDisabled={!isFocused} visibleOptionCount={10} options={plugins} onChange={setValue} />}
+			{!loading && plugins.length === 0 && <NotFound text={"No installed plugins found"} />}
 		</Box>
 	);
 }

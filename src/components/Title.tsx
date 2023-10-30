@@ -1,7 +1,7 @@
 import { Box, Text } from "ink";
 import React from "react";
 
-export default function Title({ title, color }: { title: string; color: string }) {
+export  function Title({ title, color }: { title: string; color: string }) {
 	return (
 		<Box alignSelf="center" marginTop={-1}>
 			<Text bold color={color}>

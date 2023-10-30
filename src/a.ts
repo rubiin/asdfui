@@ -1,8 +1,9 @@
 import { $ } from "execa";
 
 try {
-	const res = await $`asdf list all nodejs`;
-	console.log(res);
+	const res = await $`asdf list all deno`;
+	console.log({res})
+	 console.log(res.stdout.split("\n"))
 } catch (error) {
-	console.log(error);
+	console.log('here',error);
 }

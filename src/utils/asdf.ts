@@ -3,15 +3,22 @@ import { $ } from "execa";
 import { Option } from "@inkjs/ui";
 import { formatPluginData } from "./helpers.js";
 
-
 export const getAllPlugins = async (): Promise<Option[]> => {
-	const { stdout } = await $`asdf plugin list`;
-	return formatPluginData(stdout);
+	try {
+		const { stdout } = await $`asdf plugin list`;
+		return formatPluginData(stdout);
+	} catch (error) {
+		return [];
+	}
 };
 
 export const getToolVersions = async (name: string): Promise<Option[]> => {
-	const { stdout } = await $`asdf list all ${name}`;
-	return formatPluginData(stdout).reverse();
+	try {
+		const { stdout } = await $`asdf list all ${name}`;
+		return formatPluginData(stdout).reverse();
+	} catch (error) {
+		return [];
+	}
 };
 
 export const installToolVersion = async (name: string, version: string): Promise<boolean> => {
