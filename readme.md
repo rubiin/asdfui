@@ -11,17 +11,8 @@ $ npm install --global asdfui
 ## CLI
 
 ```
-$ asdfui --help
+$ asdfui
 
-  Usage
-    $ asdfui
-
-  Options
-    --name  Your name
-
-  Examples
-    $ asdfui --name=Jane
-    Hello, Jane
 ```
 
 TODO:
