@@ -5,7 +5,7 @@ export  function Title({ title, color }: { title: string; color: string }) {
 	return (
 		<Box alignSelf="center" marginTop={-1}>
 			<Text bold color={color}>
-				{title}{" "}
+				{title}
 			</Text>
 		</Box>
 	);

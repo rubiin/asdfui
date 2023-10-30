@@ -1,55 +1,40 @@
-import { Option, Select } from "@inkjs/ui";
+import { Select } from "@inkjs/ui";
 import { Box, useFocus, useInput } from "ink";
 import React, { useEffect, useState } from "react";
 import { usePluginsStore } from "../stores/plugin.store.js";
-import { getToolVersions } from "../utils/asdf.js";
 import { NotFound, Title } from "./index.js";
 
+import { useVersionsStore } from "../stores/version.store.js";
 import { getBorderColorOnFocus } from "../utils/helpers.js";
 import { Loader } from "./Loader.js";
 
 export function Versions() {
 	const { isFocused } = useFocus({ id: "versions" });
 	const [_value, setValue] = useState<string | undefined>();
-	const [loading, setLoading] = useState(false);
 	const currentlySelected = usePluginsStore((state) => state.currentlySelected);
+	const getAllVersions = useVersionsStore((state) => state.getAlVersions);
 
-	const [versions, setVersions] = useState<Option[]>([]);
+	// for loader
+	const loading = useVersionsStore((state) => state.loading);
+
+	const versions = useVersionsStore((state) => state.versions);
 
 	useEffect(() => {
-		// declare the data fetching function
-		setLoading(true);
 		const fetchToolsVersionsData = async () => {
-
-
-
-			const data = await getToolVersions(currentlySelected.label);
-			setVersions(data);
-			setLoading(false);
+			getAllVersions(currentlySelected.label);
 		};
-
-		// call the function
 		fetchToolsVersionsData();
 	}, [currentlySelected.label]);
 
 	useInput((input) => {
 		if (isFocused) {
 			if (input === "g") {
-				setValue("global");
-			}
-
-			if (input === "u") {
-				setValue("uninstall");
-			}
-
-			if (input === "i") {
-				setValue("install");
 			}
 		}
 	});
 	return (
 		<Box
-			borderStyle="round"
+			borderStyle="double"
 			borderColor={getBorderColorOnFocus(isFocused)}
 			flexDirection="column"
 			width="70%"

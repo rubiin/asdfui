@@ -7,6 +7,7 @@ interface PluginState {
 	currentlySelected: Option;
 	getAllLocalPlugins: () => void;
 	selectPlugin: (plugin: Option) => void;
+	loading: boolean;
 }
 
 export const usePluginsStore = create<PluginState>()((set) => ({
@@ -17,6 +18,7 @@ export const usePluginsStore = create<PluginState>()((set) => ({
 	},
 	selectPlugin: (plugin) => set({ currentlySelected: plugin }),
 	getAllLocalPlugins: async () => {
+		set((state) => ({ loading: !state.loading}))
 		const response = await getAllPlugins();
 		set({ plugins: response });
 		set({ currentlySelected: response.length > 0 ? response[0] :
@@ -25,5 +27,7 @@ export const usePluginsStore = create<PluginState>()((set) => ({
 				label: "",
 			},
 		});
+		set((state) => ({ loading: !state.loading}))
 	},
+	loading: false
 }));

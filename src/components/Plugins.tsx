@@ -1,6 +1,6 @@
 import { Select } from "@inkjs/ui";
 import { Box, useFocus } from "ink";
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { usePluginsStore } from "../stores/plugin.store.js";
 import { getBorderColorOnFocus } from "../utils/helpers.js";
 import { Loader, NotFound, Title } from "./index.js";
@@ -8,9 +8,9 @@ import { Loader, NotFound, Title } from "./index.js";
 export function Plugins() {
 	const { isFocused } = useFocus({ id: "plugins" });
 	const getAllLocalPlugins = usePluginsStore((state) => state.getAllLocalPlugins);
-	const [loading, setLoading] = useState(false);
 	const setSelectedPlugin = usePluginsStore((state) => state.selectPlugin);
 	const plugins = usePluginsStore((state) => state.plugins);
+	const loading = usePluginsStore((state) => state.loading);
 
 	function setValue(value: string) {
 		setSelectedPlugin({
@@ -20,11 +20,10 @@ export function Plugins() {
 	}
 
 	useEffect(() => {
-		setLoading(true);
+
 		// declare the data fetching function
 		const fetchPluginsData = () => {
 			getAllLocalPlugins();
-			setLoading(false);
 		};
 
 		// call the function
@@ -33,7 +32,7 @@ export function Plugins() {
 
 	return (
 		<Box
-			borderStyle="round"
+			borderStyle="double"
 			borderColor={getBorderColorOnFocus(isFocused)}
 			flexDirection="column"
 			width="50%"

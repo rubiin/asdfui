@@ -49,6 +49,7 @@
 		"zustand": "^4.4.4"
 	},
 	"devDependencies": {
+		"@rubiin/eslint-config": "^1.9.2",
 		"@sindresorhus/tsconfig": "^5.0.0",
 		"@types/react": "^18.2.33",
 		"bumpp": "^9.2.0",

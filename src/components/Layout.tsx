@@ -17,7 +17,7 @@ export const Layout: React.FC<LayoutProps> = ({ children, borderColor }) => {
 
 	return (
 		<Box width="100%" justifyContent="center">
-		<Box borderStyle="round" borderColor={borderColor} minHeight={20} width="90%">
+		<Box borderStyle="round" borderColor={borderColor} minHeight={20} gap={1}>
 			{children}
 		</Box>
 		</Box>
