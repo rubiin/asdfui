@@ -6,7 +6,7 @@ import React from "react";
 interface LayoutProps {
 	children: React.ReactNode;
 	width: number;
-	borderColor: string;
+	borderColor?: string;
 }
 
 export const Layout: React.FC<LayoutProps> = ({ children, width, borderColor }) => {

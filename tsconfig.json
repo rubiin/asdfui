@@ -2,6 +2,7 @@
 	"extends": "@sindresorhus/tsconfig",
 	"compilerOptions": {
     "jsx": "react",
+		"baseUrl": "src",
 		"outDir": "dist",
 		"incremental": true
 	},

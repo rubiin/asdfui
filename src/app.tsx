@@ -1,9 +1,6 @@
-import { useFocusManager } from "ink";
+import { Box, useFocusManager } from "ink";
 import React, { useEffect } from "react";
-import Info from "./components/info.js";
-import { Layout } from "./components/layout.js";
-import { Plugins } from "./components/plugins.js";
-import { Versions } from "./components/versions.js";
+import { Layout, Plugins, Versions, Info, Header } from "./components/index.js";
 
 export default function App() {
 	const { focus } = useFocusManager();
@@ -14,11 +11,14 @@ export default function App() {
 
 	return (
 		<>
+		<Box width="100%" flexDirection="column" alignItems="center">
+		  <Header />
 			<Layout width={80} borderColor="white">
 				<Plugins />
 				<Versions />
 			</Layout>
 			<Info />
+			</Box>
 		</>
 	);
 }

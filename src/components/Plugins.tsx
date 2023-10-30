@@ -2,8 +2,8 @@ import { Select } from "@inkjs/ui";
 import { Box, useFocus } from "ink";
 import React, { useEffect } from "react";
 import { getBorderColorOnFocus } from "../asdf.js";
-import { usePluginsStore } from "../plugin.store.js";
-import Title from "./title.js";
+import { usePluginsStore } from "../stores/plugin.store.js";
+import Title from "./Title.js";
 
 export function Plugins() {
 	const { isFocused } = useFocus({ id: "plugins" });

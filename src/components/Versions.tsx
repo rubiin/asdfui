@@ -2,8 +2,8 @@ import { Select } from "@inkjs/ui";
 import { Box, useFocus, useInput } from "ink";
 import React, { useEffect, useState } from "react";
 import { getBorderColorOnFocus, getToolVersions } from "../asdf.js";
-import { usePluginsStore } from "../plugin.store.js";
-import Title from "./title.js";
+import { usePluginsStore } from "../stores/plugin.store.js";
+import Title from "./Title.js";
 import { Option } from "@inkjs/ui";
 
 export function Versions() {
