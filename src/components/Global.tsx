@@ -1,11 +1,11 @@
-import { Box, Spacer, Text, useFocus } from "ink";
+import { Box, Spacer, Text } from "ink";
 import React, { useEffect } from "react";
 import { useGlobalsStore } from "../stores/global.stores.js";
-import { getBorderColorOnFocus, totalNumber } from "../utils/helpers.js";
+import { BorderColor } from "../types.js";
+import { totalNumber } from "../utils/helpers.js";
 import { Loader, NotFound, Title } from "./index.js";
 
 export function Globals() {
-	const { isFocused } = useFocus({ id: "globals" });
 	const getAllGlobalVersions = useGlobalsStore((state) => state.getAllGlobalVersions);
 	const globalVersions = useGlobalsStore((state) => state.versions);
 	const loading = useGlobalsStore((state) => state.loading);
@@ -23,12 +23,12 @@ export function Globals() {
 	return (
 		<Box
 			borderStyle="double"
-			borderColor={getBorderColorOnFocus(isFocused)}
+			borderColor={BorderColor.UNFOCUSED}
 			flexDirection="column"
 			minHeight={20}
 			paddingLeft={2}
 		>
-			<Title title={totalNumber("Global", globalVersions.length)} color={getBorderColorOnFocus(isFocused)} />
+			<Title title={totalNumber("Global", globalVersions.length)} color={BorderColor.UNFOCUSED} />
 			{loading && <Loader text={"Fetching global versions"} />}
 			<Box paddingY={2} paddingX={4} flexDirection="column">{globalVersions.map((element,index) => {
 				return (
