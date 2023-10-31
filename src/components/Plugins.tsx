@@ -2,8 +2,8 @@ import { Select } from "@inkjs/ui";
 import { Box, useFocus } from "ink";
 import React, { useEffect } from "react";
 import { usePluginsStore } from "../stores/plugin.store.js";
-import { getBorderColorOnFocus, totalNumber } from "../utils/helpers.js";
 import { Loader, NotFound, Title } from "./index.js";
+import { getBorderColorOnFocus, totalNumber } from "../utils/helpers.js";
 
 export function Plugins() {
 	const { isFocused } = useFocus({ id: "plugins" , autoFocus: true});
