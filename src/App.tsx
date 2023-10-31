@@ -1,7 +1,7 @@
 import { Box } from "ink";
 import React from "react";
 import { Globals } from "./components/Global.js";
-import { Header, MainContainer, Plugins, Versions } from "./components/index.js";
+import { CommandInfo, Header, MainContainer, Plugins, Versions } from "./components/index.js";
 import { BorderColor } from "./types.js";
 
 export default function App() {
@@ -17,6 +17,7 @@ export default function App() {
 				</Box>
 				<Versions />
 			</MainContainer>
+			<CommandInfo/>
 		</>
 	);
 }
