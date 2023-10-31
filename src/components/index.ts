@@ -1,4 +1,4 @@
-export * from './About.js';
+export * from './CommandInfo.js';
 export * from './MainContainer.js';
 export * from './Loader.js';
 export * from './Header.js';

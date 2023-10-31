@@ -3,6 +3,12 @@ export enum BorderColor {
 	UNFOCUSED ="white"
 }
 
+export enum TabName {
+	PLUGINS,
+	VERSIONS,
+	GLOBAL
+}
+
 
 export interface GlobalVersions{
 	name: string;
