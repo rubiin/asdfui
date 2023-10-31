@@ -6,7 +6,7 @@ import { getBorderColorOnFocus, totalNumber } from "../utils/helpers.js";
 import { Loader, NotFound, Title } from "./index.js";
 
 export function Plugins() {
-	const { isFocused } = useFocus({ id: "plugins" });
+	const { isFocused } = useFocus({ id: "plugins" , autoFocus: true});
 	const getAllLocalPlugins = usePluginsStore((state) => state.getAllLocalPlugins);
 	const setSelectedPlugin = usePluginsStore((state) => state.selectPlugin);
 	const plugins = usePluginsStore((state) => state.plugins);

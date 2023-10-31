@@ -1,15 +1,11 @@
-import { Box, useFocusManager } from "ink";
-import React, { useEffect } from "react";
+import { Box } from "ink";
+import React from "react";
 import { Globals } from "./components/Global.js";
 import { Header, MainContainer, Plugins, Versions } from "./components/index.js";
 import { BorderColor } from "./types.js";
 
 export default function App() {
-	const { focus } = useFocusManager();
 
-	useEffect(() => {
-		focus("plugins");
-	}, []);
 
 	return (
 		<>
