@@ -1,6 +1,6 @@
 {
 	"name": "asdfui",
-	"version": "0.1.7",
+	"version": "0.1.8",
 	"bin": "dist/cli.js",
 	"type": "module",
 	"description": "NestJS + MikroORM blog example with batteries included",
