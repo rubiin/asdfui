@@ -2,7 +2,7 @@ import { $ } from "execa";
 
 import { Option } from "@inkjs/ui";
 import { formatPluginData } from "./helpers.js";
-import { GlobalVersions } from "../types.js";
+import { Info } from "../types.js";
 
 export const getAllPlugins = async (): Promise<Option[]> => {
 	try {
@@ -34,7 +34,7 @@ export const unInstallToolVersion = async (name: string, version: string): Promi
 
 
 
-export const getGlobalToolVersions = async (): Promise<GlobalVersions[]> => {
+export const getInfo = async (): Promise<Info[]> => {
 	try {
 		const { stdout } = await $`asdf current`;
 		const text = stdout.trim()

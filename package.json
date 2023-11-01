@@ -46,7 +46,7 @@
 		"ink-link": "^3.0.0",
 		"meow": "^11.0.0",
 		"react": "^18.2.0",
-		"zustand": "^4.4.4"
+		"zustand": "^4.4.5"
 	},
 	"devDependencies": {
 		"@rubiin/eslint-config": "^1.9.2",

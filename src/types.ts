@@ -10,7 +10,7 @@ export enum TabName {
 }
 
 
-export interface GlobalVersions{
+export interface Info{
 	name: string;
 	version: string;
 }

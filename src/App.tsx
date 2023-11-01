@@ -1,7 +1,6 @@
 import { Box } from "ink";
 import React from "react";
-import { Globals } from "./components/Global.js";
-import { CommandInfo, Header, MainContainer, Plugins, Versions } from "./components/index.js";
+import { CommandInfo, Header, MainContainer, Plugins, Versions, Info } from "./components/index.js";
 import { BorderColor } from "./types.js";
 
 export default function App() {
@@ -12,7 +11,7 @@ export default function App() {
 		  <Header />
 			<MainContainer  borderColor={BorderColor.UNFOCUSED}>
 				<Box flexDirection="column" width="50%">
-				<Globals/>
+				<Info/>
 				<Plugins/>
 				</Box>
 				<Versions />
