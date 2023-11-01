@@ -21,3 +21,6 @@ export function totalNumber(start:string, total: number)
 export function getCommandInfo(){
  return `${movementKeys} | ${selectKey} | [i]nstall | [u]nintstall  | [g]lobal | ${quitKey}`
 }
+
+
+

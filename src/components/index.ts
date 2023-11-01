@@ -6,4 +6,4 @@ export * from './Plugins.js';
 export * from './Title.js';
 export * from './Versions.js';
 export * from './Info.js';
-export * from './NotFound.js';
+export * from './CustomAlert.js';

@@ -2,8 +2,9 @@ import { Select } from "@inkjs/ui";
 import { Box, useFocus, useInput } from "ink";
 import React, { useEffect, useState } from "react";
 import { usePluginsStore } from "../stores/plugin.store.js";
-import { NotFound, Title } from "./index.js";
+import { CustomAlert, Title } from "./index.js";
 
+import isInternetAvailable from 'is-online';
 import { useVersionsStore } from "../stores/version.store.js";
 import { getBorderColorOnFocus, totalNumber } from "../utils/helpers.js";
 import { Loader } from "./Loader.js";
@@ -11,6 +12,7 @@ import { Loader } from "./Loader.js";
 export function Versions() {
 	const { isFocused } = useFocus({ id: "versions" });
 	const [_value, setValue] = useState<string | undefined>();
+	const [isOnline, setsOnline] = useState<boolean>(true);
 	const currentlySelected = usePluginsStore((state) => state.currentlySelected);
 	const getAllVersions = useVersionsStore((state) => state.getAlVersions);
 
@@ -21,6 +23,8 @@ export function Versions() {
 
 	useEffect(() => {
 		const fetchToolsVersionsData = async () => {
+			const value = await isInternetAvailable()
+			setsOnline(value)
 			getAllVersions(currentlySelected.label);
 		};
 		fetchToolsVersionsData();
@@ -42,9 +46,11 @@ export function Versions() {
 			paddingLeft={4}
 		>
 			<Title title={totalNumber("Versions",versions.length)} color={getBorderColorOnFocus(isFocused)} />
-			{loading && <Loader text={`Fetching available ${currentlySelected.label} versions`} />}
-			{!loading && <Select isDisabled={!isFocused} visibleOptionCount={38} options={versions} onChange={setValue} />}
-			{!loading && versions.length === 0 && <NotFound text={`No versions found for plugin ${currentlySelected.label}`}/>}
+			{isOnline && loading && <Loader text={`Fetching available ${currentlySelected.label} versions`} />}
+			{isOnline && !loading && <Select isDisabled={!isFocused} visibleOptionCount={38} options={versions} onChange={setValue} />}
+			{isOnline && !loading && versions.length === 0 && <CustomAlert text={`No versions found for plugin ${currentlySelected.label}`}/>}
+			{!isOnline && <CustomAlert text="No internet" variant="error"/>}
+
 		</Box>
 	);
 }

@@ -3,7 +3,7 @@ import React, { useEffect } from "react";
 import { useInfosStore } from "../stores/global.stores.js";
 import { BorderColor } from "../types.js";
 import { totalNumber } from "../utils/helpers.js";
-import { Loader, NotFound, Title } from "./index.js";
+import { Loader, CustomAlert, Title } from "./index.js";
 
 export function Info() {
 	const getAllInfo= useInfosStore((state) => state.getAllInfo);
@@ -32,7 +32,7 @@ export function Info() {
 			{loading && <Loader text={"Fetching info"} />}
 			<Box paddingY={2} paddingX={4} flexDirection="column">{versions.map((element,index) => {
 				return (
-					<Box paddingY={0.5} key={index}>
+					<Box marginY={0.5} key={index}>
 						<Text>{element.name}</Text>
 						<Spacer />
 						<Text>{element.version}</Text>
@@ -40,7 +40,7 @@ export function Info() {
 				);
 			})}
 			</Box>
-			{!loading && versions.length === 0 && <NotFound text={"No versions found"} />}
+			{!loading && versions.length === 0 && <CustomAlert text={"No versions found"} />}
 		</Box>
 	);
 }
