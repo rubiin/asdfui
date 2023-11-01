@@ -6,13 +6,17 @@ import { getCommandInfo } from "../utils/helpers.js";
 export function CommandInfo() {
 	useFocus({isActive: false})
 	return (
-		<Box width="60%" minHeight={5} justifyContent="space-between" marginLeft={10}>
+		<Box width="100%" minHeight={5} justifyContent="space-between" flexWrap="wrap">
+			<Box flexGrow={3}>
 			<Text color="blue" bold>
 				 {getCommandInfo()}
 			</Text>
+			</Box>
+			<Box flexGrow={1}>
 			<Link url="https://github.com/rubiin/asdfui">
 			<Text color="magenta">Github</Text>
 			</Link>
+			</Box>
 		</Box>
 	);
 }
