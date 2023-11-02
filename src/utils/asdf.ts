@@ -2,7 +2,7 @@ import { $ } from "execa";
 
 import { Option } from "@inkjs/ui";
 import { formatPluginData } from "./helpers.js";
-import { Info } from "../types.js";
+import { VersionInfo } from "../types.js";
 
 export const getAllPlugins = async (): Promise<Option[]> => {
 	try {
@@ -22,30 +22,41 @@ export const getToolVersions = async (name: string): Promise<Option[]> => {
 	}
 };
 
-export const installToolVersion = async (name: string, version: string): Promise<boolean> => {
-	await $`asdf install ${name} ${version}`;
-	return true;
+export const installToolVersion = async ({ name, version }: VersionInfo): Promise<boolean> => {
+	try {
+		await $`asdf install ${name} ${version}`;
+		return true;
+	} catch (error) {
+		return false;
+	}
 };
 
-export const unInstallToolVersion = async (name: string, version: string): Promise<boolean> => {
-	await $`asdf uninstall ${name} ${version}`;
-	return true;
+export const unInstallToolVersion = async ({ name, version }: VersionInfo): Promise<boolean> => {
+	try {
+		await $`asdf uninstall ${name} ${version}`;
+
+		return true;
+	} catch (error) {
+		return false;
+	}
 };
 
-
-
-export const getInfo = async (): Promise<Info[]> => {
+export const getInfo = async (): Promise<VersionInfo[]> => {
 	try {
 		const { stdout } = await $`asdf current`;
-		const text = stdout.trim()
+		const text = stdout.trim();
 
-		const lines = text.trim().split('\n');
-		const extractedFields = lines.map(line => {
+		const lines = text.trim().split("\n");
+		const extractedFields = lines.map((line) => {
 			const fields = line.trim().split(/\s+/);
-			return { name:fields[0]!, version: fields[1]!};
+			return { name: fields[0]!, version: fields[1]! };
 		});
-		return extractedFields
+		return extractedFields;
 	} catch (error) {
 		return [];
 	}
 };
+
+export const checkIfVersionInstalled = () =>{
+	
+}

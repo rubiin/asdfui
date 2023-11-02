@@ -15,7 +15,7 @@ $ asdfui
 ```
 
 Raodmap:
-- [] mark installed versions with installed
 - [] install selected versions
 - [] uninstall selected version
+- [] mark installed versions with installed
 - [] set selected version as global

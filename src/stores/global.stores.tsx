@@ -1,10 +1,10 @@
 import { create } from "zustand";
 import { getInfo } from "../utils/asdf.js";
-import { Info } from "../types.js";
+import { VersionInfo } from "../types.js";
 
 
 interface InfoState {
-	versions: Info[];
+	versions: VersionInfo[];
 	getAllInfo: () => void;
 	loading: boolean,
 }

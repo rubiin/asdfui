@@ -10,7 +10,14 @@ export enum TabName {
 }
 
 
-export interface Info{
+export interface VersionInfo{
 	name: string;
 	version: string;
 }
+
+
+export type Item<V> = {
+	key?: string;
+	label: string;
+	value: V;
+};
