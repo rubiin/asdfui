@@ -2,7 +2,7 @@ import { Box, useFocus, useInput } from "ink";
 import Select from "ink-select-input";
 import React, { useEffect, useState } from "react";
 import { usePluginsStore } from "../stores/plugin.store.js";
-import { CustomAlert, Title } from "./index.js";
+import { CustomAlert, CustomItem, Title } from "./index.js";
 
 import isInternetAvailable from "is-online";
 import { useVersionsStore } from "../stores/version.store.js";
@@ -48,7 +48,7 @@ export function Versions() {
 		>
 			<Title title={totalNumber("Versions", versions.length)} color={getBorderColorOnFocus(isFocused)} />
 			{isOnline && loading && <Loader text={`Fetching available ${currentlySelected.label} versions`} />}
-			{isOnline && !loading && <Select limit={38} isFocused={isFocused} items={versions} onSelect={setSelectedVersion} onHighlight={setSelectedVersion} />}
+			{isOnline && !loading && <Select limit={38} isFocused={isFocused} items={versions} onSelect={setSelectedVersion} onHighlight={setSelectedVersion}  itemComponent={CustomItem}/>}
 			{isOnline && !loading && versions.length === 0 && (
 				<CustomAlert text={`No versions found for plugin ${currentlySelected.label}`} />
 			)}
@@ -57,3 +57,4 @@ export function Versions() {
 		</Box>
 	);
 }
+

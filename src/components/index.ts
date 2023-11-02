@@ -5,5 +5,6 @@ export * from './Header.js';
 export * from './Plugins.js';
 export * from './Title.js';
 export * from './Versions.js';
+export * from './CustomSelectItem.js';
 export * from './Info.js';
 export * from './CustomAlert.js';
