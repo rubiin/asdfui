@@ -6,5 +6,8 @@
     "inkjs",
     "sindresorhus",
     "zustand"
+  ],
+  "exportall.config.relExclusion": [
+    "/src/panes/index.ts"
   ]
 }

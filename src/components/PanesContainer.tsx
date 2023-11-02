@@ -6,7 +6,7 @@ interface LayoutProps {
 	borderColor?: string;
 }
 
-export const MainContainer: React.FC<LayoutProps> = ({ children, borderColor }) => {
+export const PanesContainer: React.FC<LayoutProps> = ({ children, borderColor }) => {
 	const { exit } = useApp();
 
 	useInput((input: string) => {

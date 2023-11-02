@@ -1,7 +1,10 @@
 import { Box } from "ink";
 import React from "react";
-import { CommandInfo, Header, MainContainer, Plugins, Versions, Info } from "./components/index.js";
+import { CommandInfo, Header, PanesContainer} from "./components/index.js";
 import { BorderColor } from "./types.js";
+import { Versions } from "./panes/Versions.js";
+import { Plugins } from "./panes/Plugins.js";
+import { Info } from "./panes/Info.js";
 
 export default function App() {
 
@@ -9,13 +12,13 @@ export default function App() {
 	return (
 		<>
 		  <Header />
-			<MainContainer  borderColor={BorderColor.UNFOCUSED}>
+			<PanesContainer borderColor={BorderColor.UNFOCUSED}>
 				<Box flexDirection="column" width="50%">
 				<Info/>
 				<Plugins/>
 				</Box>
 				<Versions />
-			</MainContainer>
+			</PanesContainer>
 			<CommandInfo/>
 		</>
 	);

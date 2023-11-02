@@ -1,5 +1,5 @@
 import { create } from "zustand";
-import  {getAllPlugins } from "../utils/asdf.js";
+import  {listtAllPlugins } from "../utils/asdf.js";
 import { Option } from "@inkjs/ui";
 
 interface PluginState {
@@ -19,7 +19,7 @@ export const usePluginsStore = create<PluginState>()((set) => ({
 	selectPlugin: (plugin) => set({ currentlySelected: plugin }),
 	getAllLocalPlugins: async () => {
 		set((state) => ({ loading: !state.loading}))
-		const response = await getAllPlugins();
+		const response = await listtAllPlugins();
 		set({ plugins: response });
 		set({ currentlySelected: response.length > 0 ? response[0] :
 			{

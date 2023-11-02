@@ -2,7 +2,7 @@ import  Select  from "ink-select-input";
 import { Box, useFocus } from "ink";
 import React, { useEffect } from "react";
 import { usePluginsStore } from "../stores/plugin.store.js";
-import { Loader, CustomAlert, Title } from "./index.js";
+import { Loader, CustomAlert, Title } from "../components/index.js";
 import { getBorderColorOnFocus, totalNumber } from "../utils/helpers.js";
 import { Item } from "../types.js";
 

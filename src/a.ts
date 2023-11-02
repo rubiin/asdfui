@@ -1,18 +1,12 @@
-import { $ } from "execa";
+import { listToolsVersions, listInstalledToolsVersions } from "./utils/asdf.js";
 
 try {
-	const {stdout} = await $`asdf current`;
-	const text = stdout.trim()
+	const res = await listInstalledToolsVersions("erlang")
+	const res2 = await listToolsVersions("erlang")
 
-	const lines = text.trim().split('\n');
-	const extractedFields = lines.map(line => {
-		const fields = line.trim().split(/\s+/);
-		if (fields.length >= 2) {
-			return {name:fields[0], version: fields[1]};
-		}
-		return null; // Handle lines with fewer than 2 fields
-	});
-	console.log(extractedFields);
+
+	console.log(res);
+	console.log(res2);
 
 } catch (error) {
 	console.log('here',error);

@@ -3,7 +3,7 @@ import React, { useEffect } from "react";
 import { useInfosStore } from "../stores/global.stores.js";
 import { BorderColor } from "../types.js";
 import { totalNumber } from "../utils/helpers.js";
-import { Loader, CustomAlert, Title } from "./index.js";
+import { Loader, CustomAlert, Title } from "../components/index.js";
 
 export function Info() {
 	const getAllInfo= useInfosStore((state) => state.getAllInfo);
