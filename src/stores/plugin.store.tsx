@@ -1,17 +1,18 @@
 import { create } from "zustand";
-import  {listtAllPlugins } from "../utils/asdf.js";
+import  {listtAllPlugins } from "@utils";
 import { Option } from "@inkjs/ui";
 
 interface PluginState {
 	plugins: Option[];
+	loading: boolean;
 	currentlySelected: Option;
 	getAllLocalPlugins: () => void;
 	selectPlugin: (plugin: Option) => void;
-	loading: boolean;
 }
 
 export const usePluginsStore = create<PluginState>()((set) => ({
 	plugins: [],
+	loading: false,
 	currentlySelected: {
 		value: "",
 		label: "",
@@ -28,6 +29,5 @@ export const usePluginsStore = create<PluginState>()((set) => ({
 			},
 		});
 		set((state) => ({ loading: !state.loading}))
-	},
-	loading: false
+	}
 }));

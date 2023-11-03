@@ -3,6 +3,12 @@
 	"compilerOptions": {
     "jsx": "react",
 		"outDir": "dist",
+		"paths": {
+			"@components": ["./src/components/index.js"],
+      "@utils": ["./src/utils/index.js"],
+      "@panes": ["./src/panes/index.js"],
+      "@stores": ["./src/stores/index.js"],
+		}
 	},
 	"include": ["src"]
 }

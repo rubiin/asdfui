@@ -1,9 +1,9 @@
 import { Box, Spacer, Text } from "ink";
 import React, { useEffect } from "react";
-import { useInfosStore } from "../stores/global.stores.js";
+import { useInfosStore } from "@stores";
 import { BorderColor } from "../types.js";
-import { totalNumber } from "../utils/helpers.js";
-import { Loader, CustomAlert, Title } from "../components/index.js";
+import { totalNumber } from "@utils";
+import { Loader, CustomAlert, Title } from "@components";
 
 export function Info() {
 	const getAllInfo= useInfosStore((state) => state.getAllInfo);

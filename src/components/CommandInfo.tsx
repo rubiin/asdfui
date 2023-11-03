@@ -1,7 +1,7 @@
 import { Box, Text, useFocus } from "ink";
 import Link from "ink-link";
 import React from "react";
-import { getCommandInfo } from "../utils/helpers.js";
+import { getCommandInfo } from "@utils";
 
 export function CommandInfo() {
 	useFocus({isActive: false})

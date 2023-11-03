@@ -1,20 +1,15 @@
-import { Box, useFocus, useInput, useStdout } from "ink";
+import { Box, useFocus, useInput } from "ink";
 import Select from "ink-select-input";
 import React, { useEffect, useState } from "react";
-import { usePluginsStore } from "../stores/plugin.store.js";
-import { CustomAlert, CustomItem, Title } from "../components/index.js";
+import { CustomAlert, CustomItem, Title , Loader} from "@components";
 
 import isInternetAvailable from "is-online";
-import { useInfosStore } from "../stores/global.stores.js";
-import { useVersionsStore } from "../stores/version.store.js";
+import { useInfosStore, useVersionsStore , usePluginsStore} from "@stores";
 import { Item } from "../types.js";
-import { installToolVersion, uninstallToolVersion } from "../utils/asdf.js";
-import { getBorderColorOnFocus, totalNumber } from "../utils/helpers.js";
-import { Loader } from "../components/Loader.js";
+import { installToolVersion, uninstallToolVersion ,getBorderColorOnFocus, totalNumber } from "@utils";
 
 export function Versions() {
 	const { isFocused } = useFocus({ id: "versions" });
-	const {write} = useStdout()
 	const [selectedVersion, setSelectedVersion] = useState<Item<string>>();
 	const [isOnline, setIsOnline] = useState<boolean>(true);
 	const [isLocal, setIsLocal] = useState<boolean>(true);
@@ -30,36 +25,23 @@ export function Versions() {
 
 	useEffect(() => {
 		const fetchToolsVersionsData = async () => {
-			write("online "+currentlySelected.label)
 			const value = await isInternetAvailable();
 			setIsOnline(value);
 			getAvailabeVersions(currentlySelected.label);
 		};
 
-		if(!isLocal){
-			fetchToolsVersionsData();
-		}
-
-
-	}, [currentlySelected.label, isLocal]);
-
-
-	useEffect(() => {
-
 		const fetchLocalToolsVersionsData = async () => {
-			write("online "+currentlySelected.label)
 			getInstalledVersions(currentlySelected.label);
 		};
 
-			if(isLocal){
-				fetchLocalToolsVersionsData()
-			}
-
+		if(!isLocal){
+			fetchToolsVersionsData();
+		}
+		else{
+			fetchLocalToolsVersionsData();
+		}
 
 	}, [currentlySelected.label, isLocal]);
-
-
-
 
 
 

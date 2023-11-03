@@ -7,7 +7,7 @@ interface CustomAlertProps{
 	variant?: AlertProps['variant']
 }
 
-export const CustomAlert = (opts: CustomAlertProps) => {
+export const CustomAlert : React.FC<CustomAlertProps>= (opts: CustomAlertProps) => {
 	const options = {
 		variant: "info",
 		...opts

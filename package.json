@@ -3,7 +3,7 @@
 	"version": "0.1.10",
 	"bin": "dist/cli.js",
 	"type": "module",
-	"description": "NestJS + MikroORM blog example with batteries included",
+	"description": "Experimental TUI for asdf vm",
 	"author": {
 		"email": "roobin.bhandari@gmail.com",
 		"name": "Rubin Bhandari",
@@ -48,10 +48,10 @@
 		"install": "^0.13.0",
 		"is-online": "^10.0.0",
 		"react": "^18.2.0",
-		"zustand": "^4.4.5"
+		"zustand": "^4.4.6"
 	},
 	"devDependencies": {
-		"@rubiin/eslint-config": "^1.9.2",
+		"@rubiin/eslint-config": "^1.9.4",
 		"@sindresorhus/tsconfig": "^5.0.0",
 		"@types/react": "^18.2.34",
 		"bumpp": "^9.2.0",

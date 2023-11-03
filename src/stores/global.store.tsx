@@ -1,17 +1,16 @@
 import { create } from "zustand";
-import { getInfo } from "../utils/asdf.js";
+import { getInfo } from "@utils";
 import { VersionInfo } from "../types.js";
 
 
 interface InfoState {
 	versions: VersionInfo[];
+	loading: boolean;
 	getAllInfo: () => void;
-	loading: boolean,
 }
 
 export const useInfosStore = create<InfoState>()((set) => ({
 	loading: false,
-
 	versions: [],
 	getAllInfo: async () => {
 		set((state) => ({ loading: !state.loading}))

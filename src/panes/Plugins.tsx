@@ -1,9 +1,9 @@
 import  Select  from "ink-select-input";
 import { Box, useFocus } from "ink";
 import React, { useEffect } from "react";
-import { usePluginsStore } from "../stores/plugin.store.js";
-import { Loader, CustomAlert, Title } from "../components/index.js";
-import { getBorderColorOnFocus, totalNumber } from "../utils/helpers.js";
+import { usePluginsStore } from "@stores";
+import { Loader, CustomAlert, Title } from "@components";
+import { getBorderColorOnFocus, totalNumber } from "@utils";
 import { Item } from "../types.js";
 
 export function Plugins() {
@@ -43,7 +43,7 @@ export function Plugins() {
 		>
 			<Title title={totalNumber("Plugins",plugins.length)} color={getBorderColorOnFocus(isFocused)} />
 			{loading && <Loader text={"Fetching installed asdf plugins"} />}
-			{!loading && <Select limit={10} items={plugins} isFocused={isFocused}  onSelect={handleSelect} />}
+			{!loading && <Select limit={10} items={plugins} isFocused={isFocused}  onHighlight={handleSelect} />}
 			{!loading && plugins.length === 0 && <CustomAlert text={"No installed plugins found"} />}
 		</Box>
 	);

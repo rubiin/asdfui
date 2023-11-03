@@ -36,13 +36,13 @@ dependencies:
     specifier: ^18.2.0
     version: 18.2.0
   zustand:
-    specifier: ^4.4.5
-    version: 4.4.5(@types/react@18.2.34)(react@18.2.0)
+    specifier: ^4.4.6
+    version: 4.4.6(@types/react@18.2.34)(react@18.2.0)
 
 devDependencies:
   '@rubiin/eslint-config':
-    specifier: ^1.9.2
-    version: 1.9.2(eslint@8.52.0)(typescript@5.2.2)(vitest@0.34.6)
+    specifier: ^1.9.4
+    version: 1.9.4(eslint@8.52.0)(typescript@5.2.2)(vitest@0.34.6)
   '@sindresorhus/tsconfig':
     specifier: ^5.0.0
     version: 5.0.0
@@ -459,8 +459,8 @@ packages:
       fastq: 1.15.0
     dev: true
 
-  /@rubiin/eslint-config@1.9.2(eslint@8.52.0)(typescript@5.2.2)(vitest@0.34.6):
-    resolution: {integrity: sha512-6PW2ylU74GKCdb66hMiGCtbzY3GgOKdBX5pn0tGpkjx99btiT6Q3bGb1x5X5bsfNooG928Oc/4H2gocTcG3+iw==}
+  /@rubiin/eslint-config@1.9.4(eslint@8.52.0)(typescript@5.2.2)(vitest@0.34.6):
+    resolution: {integrity: sha512-7zENtuOLu4y8fio18+xym8djrYbGLphLFqxZ1A+pg4ud5JE2mDWkM90uD+O6tduqi0gn/ZpqJdWxB25PqrIKYA==}
     peerDependencies:
       eslint: '>=8.0.0'
     dependencies:
@@ -4511,8 +4511,8 @@ packages:
     resolution: {integrity: sha512-N+d4UJSJbt/R3wqY7Coqs5pcV0aUj2j9IaQ3rNj9bVCLld8tTGKRa2USARjnvZJWVx1NDmQev8EknoczaOQDOA==}
     dev: false
 
-  /zustand@4.4.5(@types/react@18.2.34)(react@18.2.0):
-    resolution: {integrity: sha512-jgIrBBLKncQW74PA2Lclct3gwD4aPughwGE4FqlXrv3rDqQox7JCn8rwUiFK6ygJcbBAvfTf8fF+ICg7HLD2FQ==}
+  /zustand@4.4.6(@types/react@18.2.34)(react@18.2.0):
+    resolution: {integrity: sha512-Rb16eW55gqL4W2XZpJh0fnrATxYEG3Apl2gfHTyDSE965x/zxslTikpNch0JgNjJA9zK6gEFW8Fl6d1rTZaqgg==}
     engines: {node: '>=12.7.0'}
     peerDependencies:
       '@types/react': '>=16.8'
