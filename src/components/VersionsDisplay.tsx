@@ -13,7 +13,7 @@ interface VersionsDisplayProps{
 	pluginName: string;
 	isLoading: boolean;
 	versions: Item<string>[];
-	setSelectedVersion: any
+	setSelectedVersion: (value: Item<string>) => void;
 }
 
 
