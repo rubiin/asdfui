@@ -4,7 +4,7 @@ import { Option } from "@inkjs/ui";
 
 interface PluginState {
 	plugins: Option[];
-	loading: boolean;
+	isLoading: boolean;
 	currentlySelected: Option;
 	getAllLocalPlugins: () => void;
 	selectPlugin: (plugin: Option) => void;
@@ -12,14 +12,14 @@ interface PluginState {
 
 export const usePluginsStore = create<PluginState>()((set) => ({
 	plugins: [],
-	loading: false,
+	isLoading: false,
 	currentlySelected: {
 		value: "",
 		label: "",
 	},
 	selectPlugin: (plugin) => set({ currentlySelected: plugin }),
 	getAllLocalPlugins: async () => {
-		set((state) => ({ loading: !state.loading}))
+		set((state) => ({ isLoading: !state.isLoading}))
 		const response = await listtAllPlugins();
 		set({ plugins: response });
 		set({ currentlySelected: response.length > 0 ? response[0] :
@@ -28,6 +28,6 @@ export const usePluginsStore = create<PluginState>()((set) => ({
 				label: "",
 			},
 		});
-		set((state) => ({ loading: !state.loading}))
+		set((state) => ({ isLoading: !state.isLoading}))
 	}
 }));

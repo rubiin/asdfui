@@ -8,15 +8,13 @@ import { Loader, CustomAlert, Title } from "@components/index.js";
 export function Info() {
 	const getAllInfo= useInfosStore((state) => state.getAllInfo);
 	const versions = useInfosStore((state) => state.versions);
-	const loading = useInfosStore((state) => state.loading);
+	const isLoading = useInfosStore((state) => state.isLoading);
 
 	useEffect(() => {
-		// declare the data fetching function
 		const fetchInfoData = () => {
 			getAllInfo();
 		};
 
-		// call the function
 		fetchInfoData();
 	}, []);
 
@@ -29,7 +27,7 @@ export function Info() {
 			paddingLeft={2}
 		>
 			<Title title={totalNumber("Info", versions.length)} color={BorderColor.UNFOCUSED} />
-			{loading && <Loader text={"Fetching info"} />}
+			{isLoading && <Loader text="Fetching info" />}
 			<Box paddingY={2} paddingX={4} flexDirection="column">{versions.map((element,index) => {
 				return (
 					<Box marginY={0.5} key={index}>
@@ -40,7 +38,7 @@ export function Info() {
 				);
 			})}
 			</Box>
-			{!loading && versions.length === 0 && <CustomAlert text={"No versions found"} />}
+			{!isLoading && versions.length === 0 && <CustomAlert text="No versions found" />}
 		</Box>
 	);
 }

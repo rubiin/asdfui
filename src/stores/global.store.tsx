@@ -5,17 +5,17 @@ import { VersionInfo } from "../types.js";
 
 interface InfoState {
 	versions: VersionInfo[];
-	loading: boolean;
+	isLoading: boolean;
 	getAllInfo: () => void;
 }
 
 export const useInfosStore = create<InfoState>()((set) => ({
-	loading: false,
+	isLoading: false,
 	versions: [],
 	getAllInfo: async () => {
-		set((state) => ({ loading: !state.loading}))
+		set((state) => ({ isLoading: !state.isLoading}))
 		const response = await getInfo();
 		set({ versions: response });
-		set((state) => ({ loading: !state.loading}))
+		set((state) => ({ isLoading: !state.isLoading}))
 	},
 }));

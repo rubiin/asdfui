@@ -1,12 +1,12 @@
+import { Title } from "@components/index.js";
 import { Box, useFocus, useInput } from "ink";
-import Select from "ink-select-input";
 import React, { useEffect, useState } from "react";
-import { CustomAlert, CustomItem, Title , Loader} from "@components/index.js";
 
+import { VersionsDisplay } from "@components/VersionsDisplay.js";
+import { useInfosStore, usePluginsStore, useVersionsStore } from "@stores/index.js";
+import { getBorderColorOnFocus, installToolVersion, totalNumber, uninstallToolVersion } from "@utils/index.js";
 import isInternetAvailable from "is-online";
-import { useInfosStore, useVersionsStore , usePluginsStore} from "@stores/index.js";
 import { Item } from "../types.js";
-import { installToolVersion, uninstallToolVersion ,getBorderColorOnFocus, totalNumber } from "@utils/index.js";
 
 export function Versions() {
 	const { isFocused } = useFocus({ id: "versions" });
@@ -18,8 +18,12 @@ export function Versions() {
 	const getInstalledVersions = useVersionsStore((state) => state.getInstalledVersions);
 	const getAllInfo = useInfosStore((state) => state.getAllInfo);
 
+  function handleState(item: Item<string>) {
+		setSelectedVersion(item)
+ }
+
 	// for loader
-	const loading = useVersionsStore((state) => state.loading);
+	const isLoading = useVersionsStore((state) => state.isLoading);
 
 	const versions = useVersionsStore((state) => state.versions);
 
@@ -83,20 +87,17 @@ export function Versions() {
 			paddingLeft={4}
 		>
 			<Title title={totalNumber("Versions", versions.length)} color={getBorderColorOnFocus(isFocused)} />
-			{!isLocal && isOnline && loading && <Loader text={`Fetching available ${currentlySelected.label} versions`} />}
-			{isOnline && !loading && (
-				<Select
-					limit={38}
-					isFocused={isFocused}
-					items={versions}
-					onHighlight={setSelectedVersion}
-					itemComponent={CustomItem}
-				/>
-			)}
-			{isOnline && !loading && versions.length === 0 && (
-				<CustomAlert text={`No versions found for plugin ${currentlySelected.label}`} />
-			)}
-			{!isOnline && <CustomAlert text="No internet" variant="error" />}
+
+			 <VersionsDisplay
+			 setSelectedVersion= {handleState}
+			 isOnline={isOnline}
+			 isFocused={isFocused}
+			 isLoading={isLoading}
+			 isLocal={isLocal}
+			 versions={versions}
+			 pluginName={currentlySelected.label}
+			 />
+
 		</Box>
 	);
 }

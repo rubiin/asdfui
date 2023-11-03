@@ -11,7 +11,7 @@ export function Plugins() {
 	const getAllLocalPlugins = usePluginsStore((state) => state.getAllLocalPlugins);
 	const setSelectedPlugin = usePluginsStore((state) => state.selectPlugin);
 	const plugins = usePluginsStore((state) => state.plugins);
-	const loading = usePluginsStore((state) => state.loading);
+	const loading = usePluginsStore((state) => state.isLoading);
 
 
 
@@ -42,9 +42,9 @@ export function Plugins() {
 			paddingLeft={2}
 		>
 			<Title title={totalNumber("Plugins",plugins.length)} color={getBorderColorOnFocus(isFocused)} />
-			{loading && <Loader text={"Fetching installed asdf plugins"} />}
+			{loading && <Loader text="Fetching installed asdf plugins" />}
 			{!loading && <Select limit={10} items={plugins} isFocused={isFocused}  onHighlight={handleSelect} />}
-			{!loading && plugins.length === 0 && <CustomAlert text={"No installed plugins found"} />}
+			{!loading && plugins.length === 0 && <CustomAlert text="No installed plugins found" />}
 		</Box>
 	);
 }
