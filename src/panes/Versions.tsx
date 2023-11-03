@@ -1,12 +1,12 @@
 import { Box, useFocus, useInput } from "ink";
 import Select from "ink-select-input";
 import React, { useEffect, useState } from "react";
-import { CustomAlert, CustomItem, Title , Loader} from "@components";
+import { CustomAlert, CustomItem, Title , Loader} from "@components/index.js";
 
 import isInternetAvailable from "is-online";
-import { useInfosStore, useVersionsStore , usePluginsStore} from "@stores";
+import { useInfosStore, useVersionsStore , usePluginsStore} from "@stores/index.js";
 import { Item } from "../types.js";
-import { installToolVersion, uninstallToolVersion ,getBorderColorOnFocus, totalNumber } from "@utils";
+import { installToolVersion, uninstallToolVersion ,getBorderColorOnFocus, totalNumber } from "@utils/index.js";
 
 export function Versions() {
 	const { isFocused } = useFocus({ id: "versions" });
@@ -83,7 +83,7 @@ export function Versions() {
 			paddingLeft={4}
 		>
 			<Title title={totalNumber("Versions", versions.length)} color={getBorderColorOnFocus(isFocused)} />
-			{isOnline && loading && <Loader text={`Fetching available ${currentlySelected.label} versions`} />}
+			{!isLocal && isOnline && loading && <Loader text={`Fetching available ${currentlySelected.label} versions`} />}
 			{isOnline && !loading && (
 				<Select
 					limit={38}

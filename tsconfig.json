@@ -1,13 +1,13 @@
 {
 	"extends": "@sindresorhus/tsconfig",
 	"compilerOptions": {
-    "jsx": "react",
 		"outDir": "dist",
+		"baseUrl": ".",
 		"paths": {
-			"@components": ["./src/components/index.js"],
-      "@utils": ["./src/utils/index.js"],
-      "@panes": ["./src/panes/index.js"],
-      "@stores": ["./src/stores/index.js"],
+			"@components/*": ["./src/components/*"],
+      "@utils/*": ["./src/utils/*"],
+      "@panes/*": ["./src/panes/*"],
+      "@stores/*": ["./src/stores/*"],
 		}
 	},
 	"include": ["src"]

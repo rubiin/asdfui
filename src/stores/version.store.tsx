@@ -1,5 +1,5 @@
 import { create } from "zustand";
-import { listToolsVersions, listInstalledToolsVersions } from "@utils";
+import { listToolsVersions, listInstalledToolsVersions } from "@utils/index.js";
 import { Option } from "@inkjs/ui";
 
 interface VersionState {

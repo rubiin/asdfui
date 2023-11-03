@@ -15,6 +15,7 @@ $ asdfui
 ```
 
 Raodmap:
+- [] clear screen on launch
 - [] install selected versions
 - [] uninstall selected version
 - [] mark installed versions with installed

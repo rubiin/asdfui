@@ -1,5 +1,5 @@
 import { create } from "zustand";
-import  {listtAllPlugins } from "@utils";
+import  {listtAllPlugins } from "@utils/index.js";
 import { Option } from "@inkjs/ui";
 
 interface PluginState {

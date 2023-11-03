@@ -1,10 +1,8 @@
 import { Box } from "ink";
 import React from "react";
-import { CommandInfo, Header, PanesContainer} from "./components/index.js";
+import { CommandInfo, Header, PanesContainer} from "@components/index.js";
 import { BorderColor } from "./types.js";
-import { Versions } from "./panes/Versions.js";
-import { Plugins } from "./panes/Plugins.js";
-import { Info } from "./panes/Info.js";
+import { Versions, Info, Plugins } from "@panes/index.js"
 
 export default function App() {
 

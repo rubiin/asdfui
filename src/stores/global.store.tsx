@@ -1,5 +1,5 @@
 import { create } from "zustand";
-import { getInfo } from "@utils";
+import { getInfo } from "@utils/index.js";
 import { VersionInfo } from "../types.js";
 
 
