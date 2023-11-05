@@ -11,11 +11,7 @@ export function Info() {
 	const isLoading = useInfosStore((state) => state.isLoading);
 
 	useEffect(() => {
-		const fetchInfoData = () => {
-			getAllInfo();
-		};
-
-		fetchInfoData();
+		getAllInfo();
 	}, []);
 
 	return (

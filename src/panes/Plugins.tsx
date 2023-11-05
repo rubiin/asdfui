@@ -21,13 +21,7 @@ export function Plugins() {
 	};
 
 	useEffect(() => {
-		// declare the data fetching function
-		const fetchPluginsData = () => {
-			getAllLocalPlugins();
-		};
-
-		// call the function
-		fetchPluginsData();
+		getAllLocalPlugins();
 	}, []);
 
 	return (

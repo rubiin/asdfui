@@ -1,5 +1,8 @@
 import { BorderColor } from "../types.js";
 
+const movementKeys = "[↑/↓] movement";
+const quitKey = "[q]uit";
+
 export const getBorderColorOnFocus = (isFocused: boolean) => (isFocused ? BorderColor.FOCUSED : BorderColor.UNFOCUSED);
 
 export function sanitizeData(data: string): string[] {
@@ -12,9 +15,6 @@ export function formatPluginData(data: string[]) {
 		value: element,
 	}));
 }
-
-const movementKeys = "[↑/↓] movement";
-const quitKey = "[q]uit";
 
 export function totalNumber(start: string, total: number) {
 	return `${start} (${total})`;
