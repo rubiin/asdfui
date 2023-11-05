@@ -3,6 +3,14 @@ export enum BorderColor {
 	UNFOCUSED = "white",
 }
 
+export enum Keys {
+	QUIT = "q",
+	INSTALL = "i",
+	UNINSTALL = "u",
+	GLOBAL = "g",
+	TOGGLE = "a",
+}
+
 export enum TabName {
 	PLUGINS,
 	VERSIONS,

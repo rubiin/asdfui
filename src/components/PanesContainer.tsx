@@ -1,5 +1,6 @@
 import { Box, useApp, useInput } from "ink";
 import React from "react";
+import { Keys } from "../types.js";
 
 interface LayoutProps {
 	children: React.ReactNode;
@@ -10,7 +11,7 @@ export const PanesContainer: React.FC<LayoutProps> = ({ children, borderColor })
 	const { exit } = useApp();
 
 	useInput((input: string) => {
-		if (input === "q") {
+		if (input === Keys.QUIT) {
 			exit();
 		}
 	});

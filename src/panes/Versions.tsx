@@ -12,7 +12,7 @@ import {
 	uninstallToolVersion,
 } from "@utils/index.js";
 import isInternetAvailable from "is-online";
-import { Item } from "../types.js";
+import { Item, Keys } from "../types.js";
 
 export function Versions() {
 	const { isFocused } = useFocus({ id: "versions" });
@@ -53,25 +53,32 @@ export function Versions() {
 
 	useInput(async (input) => {
 		if (isFocused) {
-			if (input === "i") {
-				await installToolVersion({ name: currentlySelected.label, version: selectedVersion!.value }).then(() => {
+			switch (input) {
+				case Keys.INSTALL: {
+					await installToolVersion({ name: currentlySelected.label, version: selectedVersion!.value }).then(() => {
+						getAllInfo();
+						getAvailabeVersions(currentlySelected.label);
+					});
+					break;
+				}
+
+				case Keys.UNINSTALL: {
+					await uninstallToolVersion({ name: currentlySelected.label, version: selectedVersion!.value });
 					getAllInfo();
 					getAvailabeVersions(currentlySelected.label);
-				});
-			}
+					break;
+				}
 
-			if (input === "a") {
-				setIsLocal(!isLocal);
-			}
-
-			if (input === "u") {
-				await uninstallToolVersion({ name: currentlySelected.label, version: selectedVersion!.value });
-				getAllInfo();
-				getAvailabeVersions(currentlySelected.label);
-			}
-
-			if (input === "g") {
-				await setVersionGlobal({ name: currentlySelected.label, version: selectedVersion!.value });
+				case Keys.GLOBAL: {
+					await setVersionGlobal({ name: currentlySelected.label, version: selectedVersion!.value });
+					break;
+				}
+				case Keys.TOGGLE: {
+					setIsLocal(!isLocal);
+					break;
+				}
+				default:
+				// noop
 			}
 		}
 	});
