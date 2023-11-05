@@ -71,6 +71,7 @@ export function Versions() {
 
 				case Keys.GLOBAL: {
 					await setVersionGlobal({ name: currentlySelected.label, version: selectedVersion!.value });
+					getAllInfo();
 					break;
 				}
 				case Keys.TOGGLE: {
