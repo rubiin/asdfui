@@ -1,6 +1,6 @@
 {
 	"name": "asdfui",
-	"version": "0.1.12",
+	"version": "0.1.13",
 	"bin": "dist/cli.js",
 	"type": "module",
 	"description": "Experimental TUI for asdf vm",
