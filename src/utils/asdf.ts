@@ -77,6 +77,7 @@ export const listInstalledToolsVersions = async (name: string) => {
 
 	try {
 		const { stdout } = await $`asdf list ${name}`;
+		if (stdout === "") return [];
 		const sanitizedData = sanitizeData(stdout);
 		return formatPluginData(sanitizedData.map((value) => value.trim().replace("*", "")));
 	} catch (error) {

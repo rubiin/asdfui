@@ -27,7 +27,7 @@ export const VersionsDisplay: React.FC<VersionsDisplayProps> = ({
 	return (
 		<>
 			{!isLocal && isOnline && isLoading && <Loader text={`Fetching available ${pluginName} versions`} />}
-			{isOnline && !isLoading && (
+			{isOnline && !isLoading && versions.length > 0 && (
 				<Select
 					limit={38}
 					isFocused={isFocused}
