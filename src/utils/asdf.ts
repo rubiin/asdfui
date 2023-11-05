@@ -59,13 +59,24 @@ export const getInfo = async (): Promise<VersionInfo[]> => {
 	}
 };
 
-export const checkIfVersionInstalled = () =>{
+export const setVersionGlobal = async ({ name, version }: VersionInfo): Promise<boolean> => {
+	try {
+		await $`asdf global ${name} ${version}`;
 
+		return true;
+	} catch (error) {
+		return false;
+	}
 }
 
 
 
 export const listInstalledToolsVersions = async(name: string) =>{
+	// otherwise asdf returns all plugins 
+	if(name === ""){
+		return [];
+	}
+
 	try {
 		const {stdout} = await $`asdf list ${name}`;
 		const sanitizedData = sanitizeData(stdout)
