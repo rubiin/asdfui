@@ -14,7 +14,6 @@ export function formatPluginData(data: string[]) {
 }
 
 const movementKeys = "[↑/↓] movement";
-const selectKey = "[↵] select";
 const quitKey = "[q]uit";
 
 export function totalNumber(start: string, total: number) {
@@ -22,5 +21,5 @@ export function totalNumber(start: string, total: number) {
 }
 
 export function getCommandInfo() {
-	return `${movementKeys} | ${selectKey} | [i]nstall | [u]nintstall  | [g]lobal | ${quitKey}`;
+	return `${movementKeys} | [i]nstall | [u]nintstall  | [g]lobal | ${quitKey}`;
 }
