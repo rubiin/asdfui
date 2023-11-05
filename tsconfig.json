@@ -3,6 +3,8 @@
 	"compilerOptions": {
 		"outDir": "dist",
 		"baseUrl": ".",
+		"declaration": false,
+		"removeComments": true,
 		"paths": {
 			"@components/*": ["./src/components/*"],
 			"@utils/*": ["./src/utils/*"],
