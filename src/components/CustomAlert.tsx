@@ -3,7 +3,7 @@ import { Box } from "ink";
 import React from "react";
 
 interface CustomAlertProps {
-	text: string;
+	label: string;
 	variant?: AlertProps["variant"];
 }
 
@@ -14,7 +14,7 @@ export const CustomAlert: React.FC<CustomAlertProps> = (opts: CustomAlertProps) 
 	};
 	return (
 		<Box marginTop={1} marginRight={4}>
-			<Alert variant={options.variant as AlertProps["variant"]}>{options.text}</Alert>
+			<Alert variant={options.variant as AlertProps["variant"]}>{options.label}</Alert>
 		</Box>
 	);
 };

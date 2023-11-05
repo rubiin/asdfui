@@ -85,7 +85,7 @@ export function Versions() {
 			minHeight={20}
 			paddingLeft={4}
 		>
-			<Title title={totalNumber("Versions", versions.length)} color={getBorderColorOnFocus(isFocused)} />
+			<Title label={totalNumber("Versions", versions.length)} color={getBorderColorOnFocus(isFocused)} />
 
 			<VersionsDisplay
 				setSelectedVersion={handleState}

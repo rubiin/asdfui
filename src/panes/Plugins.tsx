@@ -32,10 +32,10 @@ export function Plugins() {
 			minHeight={20}
 			paddingLeft={2}
 		>
-			<Title title={totalNumber("Plugins", plugins.length)} color={getBorderColorOnFocus(isFocused)} />
-			{loading && <Loader text="Fetching installed asdf plugins" />}
+			<Title label={totalNumber("Plugins", plugins.length)} color={getBorderColorOnFocus(isFocused)} />
+			{loading && <Loader label="Fetching installed asdf plugins" />}
 			{!loading && <Select limit={10} items={plugins} isFocused={isFocused} onHighlight={handleSelect} />}
-			{!loading && plugins.length === 0 && <CustomAlert text="No installed plugins found" />}
+			{!loading && plugins.length === 0 && <CustomAlert label="No installed plugins found" />}
 		</Box>
 	);
 }

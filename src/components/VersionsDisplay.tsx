@@ -26,7 +26,7 @@ export const VersionsDisplay: React.FC<VersionsDisplayProps> = ({
 }) => {
 	return (
 		<>
-			{!isLocal && isOnline && isLoading && <Loader text={`Fetching available ${pluginName} versions`} />}
+			{!isLocal && isOnline && isLoading && <Loader label={`Fetching available ${pluginName} versions`} />}
 			{isOnline && !isLoading && versions.length > 0 && (
 				<Select
 					limit={38}
@@ -36,8 +36,8 @@ export const VersionsDisplay: React.FC<VersionsDisplayProps> = ({
 					itemComponent={CustomItem}
 				/>
 			)}
-			{!isLoading && versions.length === 0 && <CustomAlert text={`No versions found for plugin ${pluginName}`} />}
-			{!isOnline && !isLoading && <CustomAlert text="No internet" variant="error" />}
+			{!isLoading && versions.length === 0 && <CustomAlert label={`No versions found for plugin ${pluginName}`} />}
+			{!isOnline && !isLoading && <CustomAlert label="No internet" variant="error" />}
 		</>
 	);
 };
