@@ -16,7 +16,7 @@ export const PanesContainer: React.FC<LayoutProps> = ({ children, borderColor })
 	});
 
 	return (
-		<Box  width="100%" borderColor={borderColor} minHeight={20} gap={1}>
+		<Box width="100%" borderColor={borderColor} minHeight={20} gap={1}>
 			{children}
 		</Box>
 	);

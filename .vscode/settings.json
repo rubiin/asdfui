@@ -1,13 +1,4 @@
 {
-  "cSpell.words": [
-    "asdfui",
-    "bumpp",
-    "execa",
-    "inkjs",
-    "sindresorhus",
-    "zustand"
-  ],
-  "exportall.config.relExclusion": [
-    "/src/panes/index.ts"
-  ]
+	"cSpell.words": ["asdfui", "bumpp", "execa", "inkjs", "sindresorhus", "zustand"],
+	"exportall.config.relExclusion": ["/src/panes/index.ts"]
 }

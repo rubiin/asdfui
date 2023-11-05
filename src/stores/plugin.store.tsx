@@ -1,5 +1,5 @@
 import { create } from "zustand";
-import  {listtAllPlugins } from "@utils/index.js";
+import { listtAllPlugins } from "@utils/index.js";
 import { Option } from "@inkjs/ui";
 
 interface PluginState {
@@ -10,24 +10,21 @@ interface PluginState {
 	selectPlugin: (plugin: Option) => void;
 }
 
+const emptySelection = {
+	value: "",
+	label: "",
+};
+
 export const usePluginsStore = create<PluginState>()((set) => ({
 	plugins: [],
 	isLoading: false,
-	currentlySelected: {
-		value: "",
-		label: "",
-	},
+	currentlySelected: emptySelection,
 	selectPlugin: (plugin) => set({ currentlySelected: plugin }),
 	getAllLocalPlugins: async () => {
-		set((state) => ({ isLoading: !state.isLoading}))
+		set((state) => ({ isLoading: !state.isLoading }));
 		const response = await listtAllPlugins();
 		set({ plugins: response });
-		set({ currentlySelected: response.length > 0 ? response[0] :
-			{
-				value: "",
-				label: "",
-			},
-		});
-		set((state) => ({ isLoading: !state.isLoading}))
-	}
+		set({ currentlySelected: response.length > 0 ? response[0] : emptySelection });
+		set((state) => ({ isLoading: !state.isLoading }));
+	},
 }));

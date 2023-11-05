@@ -2,19 +2,19 @@ import { Alert, AlertProps } from "@inkjs/ui";
 import { Box } from "ink";
 import React from "react";
 
-interface CustomAlertProps{
+interface CustomAlertProps {
 	text: string;
-	variant?: AlertProps['variant']
+	variant?: AlertProps["variant"];
 }
 
-export const CustomAlert : React.FC<CustomAlertProps>= (opts: CustomAlertProps) => {
+export const CustomAlert: React.FC<CustomAlertProps> = (opts: CustomAlertProps) => {
 	const options = {
 		variant: "info",
-		...opts
-	}
+		...opts,
+	};
 	return (
 		<Box marginTop={1} marginRight={4}>
-			<Alert variant={options.variant as AlertProps['variant']}>{options.text}</Alert>
+			<Alert variant={options.variant as AlertProps["variant"]}>{options.text}</Alert>
 		</Box>
 	);
 };

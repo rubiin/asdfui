@@ -7,7 +7,7 @@ import { VersionInfo } from "../types.js";
 export const listtAllPlugins = async (): Promise<Option[]> => {
 	try {
 		const { stdout } = await $`asdf plugin list`;
-		const sanitizedData = sanitizeData(stdout)
+		const sanitizedData = sanitizeData(stdout);
 		return formatPluginData(sanitizedData);
 	} catch (error) {
 		return [];
@@ -17,7 +17,7 @@ export const listtAllPlugins = async (): Promise<Option[]> => {
 export const listToolsVersions = async (name: string): Promise<Option[]> => {
 	try {
 		const { stdout } = await $`asdf list all ${name}`;
-		const sanitizedData = sanitizeData(stdout)
+		const sanitizedData = sanitizeData(stdout);
 		return formatPluginData(sanitizedData).reverse();
 	} catch (error) {
 		return [];
@@ -67,22 +67,19 @@ export const setVersionGlobal = async ({ name, version }: VersionInfo): Promise<
 	} catch (error) {
 		return false;
 	}
-}
+};
 
-
-
-export const listInstalledToolsVersions = async(name: string) =>{
-	// otherwise asdf returns all plugins 
-	if(name === ""){
+export const listInstalledToolsVersions = async (name: string) => {
+	// otherwise asdf returns all plugins
+	if (name === "") {
 		return [];
 	}
 
 	try {
-		const {stdout} = await $`asdf list ${name}`;
-		const sanitizedData = sanitizeData(stdout)
-		return formatPluginData(sanitizedData.map(value=> value.trim().replace("*","")));
-
+		const { stdout } = await $`asdf list ${name}`;
+		const sanitizedData = sanitizeData(stdout);
+		return formatPluginData(sanitizedData.map((value) => value.trim().replace("*", "")));
 	} catch (error) {
 		return [];
 	}
-}
+};

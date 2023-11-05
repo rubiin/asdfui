@@ -1,20 +1,18 @@
 export enum BorderColor {
-	FOCUSED ="green",
-	UNFOCUSED ="white"
+	FOCUSED = "green",
+	UNFOCUSED = "white",
 }
 
 export enum TabName {
 	PLUGINS,
 	VERSIONS,
-	GLOBAL
+	GLOBAL,
 }
 
-
-export interface VersionInfo{
+export interface VersionInfo {
 	name: string;
 	version: string;
 }
-
 
 export type Item<V> = {
 	key?: string;

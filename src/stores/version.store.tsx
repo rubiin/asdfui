@@ -13,15 +13,15 @@ export const useVersionsStore = create<VersionState>()((set) => ({
 	versions: [],
 	isLoading: false,
 	getAvailabeVersions: async (name: string) => {
-		set((state) => ({ isLoading: !state.isLoading}))
+		set((state) => ({ isLoading: !state.isLoading }));
 		const response = await listToolsVersions(name);
 		set({ versions: response });
-		set((state) => ({ isLoading: !state.isLoading}))
+		set((state) => ({ isLoading: !state.isLoading }));
 	},
 	getInstalledVersions: async (name: string) => {
-		set((state) => ({ isLoading: !state.isLoading}))
+		set((state) => ({ isLoading: !state.isLoading }));
 		const response = await listInstalledToolsVersions(name);
 		set({ versions: response });
-		set((state) => ({ isLoading: !state.isLoading}))
-	}
+		set((state) => ({ isLoading: !state.isLoading }));
+	},
 }));

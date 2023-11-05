@@ -1,16 +1,21 @@
 import { Title } from "@components/index.js";
-import { Box, useFocus, useInput, useStdout } from "ink";
+import { Box, useFocus, useInput } from "ink";
 import React, { useEffect, useState } from "react";
 
 import { VersionsDisplay } from "@components/VersionsDisplay.js";
 import { useInfosStore, usePluginsStore, useVersionsStore } from "@stores/index.js";
-import { getBorderColorOnFocus, installToolVersion, setVersionGlobal, totalNumber, uninstallToolVersion } from "@utils/index.js";
+import {
+	getBorderColorOnFocus,
+	installToolVersion,
+	setVersionGlobal,
+	totalNumber,
+	uninstallToolVersion,
+} from "@utils/index.js";
 import isInternetAvailable from "is-online";
 import { Item } from "../types.js";
 
 export function Versions() {
 	const { isFocused } = useFocus({ id: "versions" });
-	const {write} = useStdout()
 	const [selectedVersion, setSelectedVersion] = useState<Item<string>>();
 	const [isOnline, setIsOnline] = useState<boolean>(true);
 	const [isLocal, setIsLocal] = useState<boolean>(true);
@@ -19,9 +24,9 @@ export function Versions() {
 	const getInstalledVersions = useVersionsStore((state) => state.getInstalledVersions);
 	const getAllInfo = useInfosStore((state) => state.getAllInfo);
 
-  function handleState(item: Item<string>) {
-		setSelectedVersion(item)
- }
+	function handleState(item: Item<string>) {
+		setSelectedVersion(item);
+	}
 
 	// for loader
 	const isLoading = useVersionsStore((state) => state.isLoading);
@@ -39,31 +44,24 @@ export function Versions() {
 			getInstalledVersions(currentlySelected.label);
 		};
 
-		if(!isLocal){
+		if (!isLocal) {
 			fetchToolsVersionsData();
-		}
-		else{
+		} else {
 			fetchLocalToolsVersionsData();
 		}
-
 	}, [currentlySelected.label, isLocal]);
-
-
 
 	useInput(async (input) => {
 		if (isFocused) {
 			if (input === "i") {
-				await installToolVersion({ name: currentlySelected.label, version: selectedVersion!.value })
-				.then(
-					() => {
-						getAllInfo();
-						getAvailabeVersions(currentlySelected.label)
-					}
-				);
+				await installToolVersion({ name: currentlySelected.label, version: selectedVersion!.value }).then(() => {
+					getAllInfo();
+					getAvailabeVersions(currentlySelected.label);
+				});
 			}
 
 			if (input === "a") {
-				 setIsLocal(!isLocal)
+				setIsLocal(!isLocal);
 			}
 
 			if (input === "u") {
@@ -73,10 +71,7 @@ export function Versions() {
 			}
 
 			if (input === "g") {
-				write(selectedVersion!.value)
 				await setVersionGlobal({ name: currentlySelected.label, version: selectedVersion!.value });
-				write("completed")
-
 			}
 		}
 	});
@@ -92,18 +87,15 @@ export function Versions() {
 		>
 			<Title title={totalNumber("Versions", versions.length)} color={getBorderColorOnFocus(isFocused)} />
 
-			 <VersionsDisplay
-			 setSelectedVersion= {handleState}
-			 isOnline={isOnline}
-			 isFocused={isFocused}
-			 isLoading={isLoading}
-			 isLocal={isLocal}
-			 versions={versions}
-			 pluginName={currentlySelected.label}
-			 />
-
+			<VersionsDisplay
+				setSelectedVersion={handleState}
+				isOnline={isOnline}
+				isFocused={isFocused}
+				isLoading={isLoading}
+				isLocal={isLocal}
+				versions={versions}
+				pluginName={currentlySelected.label}
+			/>
 		</Box>
 	);
 }
-
-
