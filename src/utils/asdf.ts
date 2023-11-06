@@ -4,7 +4,7 @@ import { Option } from "@inkjs/ui";
 import { formatPluginData, sanitizeData } from "./helpers.js";
 import { VersionInfo } from "../types.js";
 
-export const listtAllPlugins = async (): Promise<Option[]> => {
+export const listAllPlugins = async (): Promise<Option[]> => {
 	try {
 		const { stdout } = await $`asdf plugin list`;
 		const sanitizedData = sanitizeData(stdout);
@@ -79,7 +79,7 @@ export const listInstalledToolsVersions = async (name: string) => {
 		const { stdout } = await $`asdf list ${name}`;
 		if (stdout === "") return [];
 		const sanitizedData = sanitizeData(stdout);
-		return formatPluginData(sanitizedData.map((value) => value.trim().replace("*", "")));
+		return formatPluginData(sanitizedData.map((value) => value.trim().replace("*", ""))).reverse();
 	} catch (error) {
 		return [];
 	}
