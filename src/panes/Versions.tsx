@@ -38,11 +38,15 @@ export function Versions() {
 			const value = await isInternetAvailable();
 			setIsOnline(value);
 			getAvailabeVersions(currentlySelected.label);
+			setSelectedVersion(versions[0] ?? undefined);
 		};
 
 		const fetchLocalToolsVersionsData = async () => {
 			getInstalledVersions(currentlySelected.label);
+			setSelectedVersion(versions[0] ?? undefined);
 		};
+
+		// TODO: set first version as selected version
 
 		if (!isLocal) {
 			fetchToolsVersionsData();
@@ -65,7 +69,7 @@ export function Versions() {
 				case Keys.UNINSTALL: {
 					await uninstallToolVersion({ name: currentlySelected.label, version: selectedVersion!.value });
 					getAllInfo();
-					getAvailabeVersions(currentlySelected.label);
+					getInstalledVersions(currentlySelected.label);
 					break;
 				}
 
