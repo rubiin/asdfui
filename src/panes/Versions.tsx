@@ -62,20 +62,24 @@ export function Versions() {
 					await installToolVersion({ name: currentlySelected.label, version: selectedVersion!.value }).then(() => {
 						getAllInfo();
 						getAvailabeVersions(currentlySelected.label);
+						setIsLocal(true);
 					});
 					break;
 				}
 
 				case Keys.UNINSTALL: {
-					await uninstallToolVersion({ name: currentlySelected.label, version: selectedVersion!.value });
-					getAllInfo();
-					getInstalledVersions(currentlySelected.label);
+					await uninstallToolVersion({ name: currentlySelected.label, version: selectedVersion!.value }).then(() => {
+						getAllInfo();
+						getInstalledVersions(currentlySelected.label);
+						setIsLocal(true);
+					});
 					break;
 				}
 
 				case Keys.GLOBAL: {
-					await setVersionGlobal({ name: currentlySelected.label, version: selectedVersion!.value });
-					getAllInfo();
+					await setVersionGlobal({ name: currentlySelected.label, version: selectedVersion!.value }).then(() => {
+						getAllInfo();
+					});
 					break;
 				}
 				case Keys.TOGGLE: {
