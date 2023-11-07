@@ -31,22 +31,23 @@ export function Versions() {
 	// for loader
 	const isLoading = useVersionsStore((state) => state.isLoading);
 
-	const versions = useVersionsStore((state) => state.versions);
+	const availableVersions = useVersionsStore((state) => state.availableVersions);
+	const installedVersions = useVersionsStore((state) => state.installedVersions);
 
 	useEffect(() => {
 		const fetchToolsVersionsData = async () => {
 			const value = await isInternetAvailable();
 			setIsOnline(value);
 			getAvailabeVersions(currentlySelected.label);
-			setSelectedVersion(versions[0] ?? undefined);
+			setSelectedVersion(availableVersions[0] ?? undefined);
 		};
 
 		const fetchLocalToolsVersionsData = async () => {
 			getInstalledVersions(currentlySelected.label);
-			setSelectedVersion(versions[0] ?? undefined);
+			setSelectedVersion(availableVersions[0] ?? undefined);
 		};
 
-		// TODO: set first version as selected version
+		// TODO: set first version as selected version (BUG)
 
 		if (!isLocal) {
 			fetchToolsVersionsData();
@@ -101,7 +102,7 @@ export function Versions() {
 			minHeight={20}
 			paddingLeft={4}
 		>
-			<Title label={totalNumber("Versions", versions.length)} color={getBorderColorOnFocus(isFocused)} />
+			<Title label={totalNumber("Versions", availableVersions.length)} color={getBorderColorOnFocus(isFocused)} />
 
 			<VersionsDisplay
 				setSelectedVersion={handleState}
@@ -109,7 +110,7 @@ export function Versions() {
 				isFocused={isFocused}
 				isLoading={isLoading}
 				isLocal={isLocal}
-				versions={versions}
+				versions={isLocal ? installedVersions : availableVersions}
 				pluginName={currentlySelected.label}
 			/>
 		</Box>

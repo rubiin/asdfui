@@ -1,27 +1,29 @@
-import { create } from "zustand";
-import { listToolsVersions, listInstalledToolsVersions } from "@utils/index.js";
 import { Option } from "@inkjs/ui";
+import { listInstalledToolsVersions, listToolsVersions } from "@utils/index.js";
+import { create } from "zustand";
 
 interface VersionState {
-	versions: Option[];
+	availableVersions: Option[];
+	installedVersions: Option[];
 	isLoading: boolean;
 	getAvailabeVersions: (name: string) => void;
 	getInstalledVersions: (name: string) => void;
 }
 
 export const useVersionsStore = create<VersionState>()((set) => ({
-	versions: [],
+	availableVersions: [],
+	installedVersions: [],
 	isLoading: false,
 	getAvailabeVersions: async (name: string) => {
 		set((state) => ({ isLoading: !state.isLoading }));
 		const response = await listToolsVersions(name);
-		set({ versions: response });
+		set({ availableVersions: response });
 		set((state) => ({ isLoading: !state.isLoading }));
 	},
 	getInstalledVersions: async (name: string) => {
 		set((state) => ({ isLoading: !state.isLoading }));
 		const response = await listInstalledToolsVersions(name);
-		set({ versions: response });
+		set({ installedVersions: response });
 		set((state) => ({ isLoading: !state.isLoading }));
 	},
 }));

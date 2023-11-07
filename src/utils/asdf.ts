@@ -3,6 +3,9 @@ import { $ } from "execa";
 import { Option } from "@inkjs/ui";
 import { formatPluginData, sanitizeData } from "./helpers.js";
 import { VersionInfo } from "../types.js";
+import fs from "node:fs";
+import os from "node:os";
+import readLine from "node:readline";
 
 export const listAllPlugins = async (): Promise<Option[]> => {
 	try {
@@ -79,8 +82,40 @@ export const listInstalledToolsVersions = async (name: string) => {
 		const { stdout } = await $`asdf list ${name}`;
 		if (stdout === "") return [];
 		const sanitizedData = sanitizeData(stdout);
-		return formatPluginData(sanitizedData.map((value) => value.trim().replace("*", ""))).reverse();
+		const values = formatPluginData(sanitizedData.map((value) => value.trim().replace("*", ""))).reverse();
+		const globalVersion = await getGlobalVersionForTool(name);
+
+		if (globalVersion) {
+			return values.map((value) => {
+				if (value.label === globalVersion) {
+					value.label += " 🌎";
+				}
+				return value;
+			});
+		}
+		return values;
 	} catch (error) {
 		return [];
 	}
 };
+
+export async function getGlobalVersionForTool(searchTerm: string) {
+	const filePath = `${os.homedir()}/.tool-versions`;
+	return new Promise((resolve, reject) => {
+		let result: unknown = undefined;
+
+		let lineReader = readLine.createInterface({
+			input: fs.createReadStream(filePath),
+		});
+
+		lineReader.on(`line`, function (line: string) {
+			if (line.includes(searchTerm)) {
+				result = line.split(" ")[1]!;
+			}
+		});
+
+		// Wait for close/error event and resolve/reject
+		lineReader.on("close", () => resolve(result));
+		lineReader.on("error", reject);
+	});
+}
