@@ -23,3 +23,7 @@ export function totalNumber(start: string, installed: number, available?: number
 export function getCommandInfo() {
 	return `${movementKeys} | [i]nstall | [u]nintstall  | [g]lobal | ${quitKey}`;
 }
+
+export function clearConsole() {
+	process.stdout.write("\x1B[2J\x1B[3J\x1B[H\x1Bc");
+}
