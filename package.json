@@ -42,7 +42,6 @@
 		"@inkjs/ui": "^1.0.0",
 		"execa": "^8.0.1",
 		"ink": "^4.4.1",
-		"ink-link": "^3.0.0",
 		"ink-select-input": "^5.0.0",
 		"install": "^0.13.0",
 		"is-online": "^10.0.0",
