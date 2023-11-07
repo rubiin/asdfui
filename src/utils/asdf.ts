@@ -82,17 +82,17 @@ export const listInstalledToolsVersions = async (name: string) => {
 		const { stdout } = await $`asdf list ${name}`;
 		if (stdout === "") return [];
 		const sanitizedData = sanitizeData(stdout);
-		const values = formatPluginData(sanitizedData.map((value) => value.trim().replace("*", ""))).reverse();
-		const globalVersion = await getGlobalVersionForTool(name);
-
-		if (globalVersion) {
-			return values.map((value) => {
-				if (value.label === globalVersion) {
-					value.label += " 🌎";
+		const values = formatPluginData(
+			sanitizedData.map((value) => {
+				value = value.trim();
+				if (value.startsWith("*")) {
+					value = value.replace("*", "") + " 🌎";
 				}
+
 				return value;
-			});
-		}
+			}),
+		).reverse();
+
 		return values;
 	} catch (error) {
 		return [];
@@ -108,7 +108,7 @@ export async function getGlobalVersionForTool(searchTerm: string) {
 			input: fs.createReadStream(filePath),
 		});
 
-		lineReader.on(`line`, function (line: string) {
+		lineReader.on("line", function (line: string) {
 			if (line.includes(searchTerm)) {
 				result = line.split(" ")[1]!;
 			}
