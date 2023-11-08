@@ -60,26 +60,23 @@ export function Versions() {
 		if (isFocused) {
 			switch (input) {
 				case Keys.INSTALL: {
-					await installToolVersion({ name: currentlySelected.label, version: selectedVersion!.value }).then(() => {
-						getAllInfo();
-						getAvailabeVersions(currentlySelected.label);
+					await installToolVersion({ name: currentlySelected.label, version: selectedVersion!.value }).then(async() => {
+						await Promise.all([getAllInfo(),getInstalledVersions(currentlySelected.label)])
 						setIsLocal(true);
 					});
 					break;
 				}
 
 				case Keys.UNINSTALL: {
-					await uninstallToolVersion({ name: currentlySelected.label, version: selectedVersion!.value }).then(() => {
-						getAllInfo();
-						getInstalledVersions(currentlySelected.label);
-						setIsLocal(true);
+					await uninstallToolVersion({ name: currentlySelected.label, version: selectedVersion!.value }).then(async() => {
+						await Promise.all([getAllInfo(),getInstalledVersions(currentlySelected.label)])
 					});
 					break;
 				}
 
 				case Keys.GLOBAL: {
-					await setVersionGlobal({ name: currentlySelected.label, version: selectedVersion!.value }).then(() => {
-						getAllInfo();
+					await setVersionGlobal({ name: currentlySelected.label, version: selectedVersion!.value }).then(async() => {
+						await Promise.all([getAllInfo(),getInstalledVersions(currentlySelected.label)])
 					});
 					break;
 				}
