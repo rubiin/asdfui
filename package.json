@@ -27,8 +27,8 @@
 		"node": ">=18"
 	},
 	"scripts": {
-		"build": "rimraf dist && tsc && tsc-alias",
-		"dev": "tsc && (concurrently \"tsc -w\" \"tsc-alias -w\")",
+		"build": "rimraf dist && tsup",
+		"dev": "tsup --watch src/index.ts",
 		"lint": "ESLINT_USE_FLAT_CONFIG=true eslint '{src,test}/**/*.ts' --cache",
 		"lint:fix": "ESLINT_USE_FLAT_CONFIG=true eslint '{src,test}/**/*.ts' --cache --fix",
 		"prerelease": "npm run build",
@@ -45,7 +45,9 @@
 		"ink-select-input": "^5.0.0",
 		"install": "^0.13.0",
 		"is-online": "^10.0.0",
+		"lru-cache": "^10.0.1",
 		"react": "^18.2.0",
+		"tsup": "^7.2.0",
 		"zustand": "^4.4.6"
 	},
 	"devDependencies": {
@@ -59,8 +61,6 @@
 		"prettier": "^3.0.3",
 		"react-devtools-core": "^4.28.5",
 		"rimraf": "^5.0.5",
-		"ts-node": "^10.9.1",
-		"tsc-alias": "^1.8.8",
 		"typescript": "^5.2.2"
 	}
 }
