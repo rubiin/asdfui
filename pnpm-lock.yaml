@@ -17,15 +17,9 @@ dependencies:
   ink-select-input:
     specifier: ^5.0.0
     version: 5.0.0(ink@4.4.1)(react@18.2.0)
-  install:
-    specifier: ^0.13.0
-    version: 0.13.0
   is-online:
     specifier: ^10.0.0
     version: 10.0.0
-  lru-cache:
-    specifier: ^10.0.1
-    version: 10.0.1
   react:
     specifier: ^18.2.0
     version: 18.2.0
@@ -2450,11 +2444,6 @@ packages:
       - utf-8-validate
     dev: false
 
-  /install@0.13.0:
-    resolution: {integrity: sha512-zDml/jzr2PKU9I8J/xyZBQn8rPCAY//UOYNmR01XwNwyfhEWObo2SWfSl1+0tm1u6PhxLwDnfsT/6jB7OUxqFA==}
-    engines: {node: '>= 0.10'}
-    dev: false
-
   /internal-slot@1.0.6:
     resolution: {integrity: sha512-Xj6dv+PsbtwyPpEflsejS+oIZxmMlV44zAhG479uYu89MsjcYOhCFnNyKrkJrihbsiasQyY0afoCl/9BLR65bg==}
     engines: {node: '>= 0.4'}
@@ -2900,6 +2889,7 @@ packages:
   /lru-cache@10.0.1:
     resolution: {integrity: sha512-IJ4uwUTi2qCccrioU6g9g/5rvvVl13bsdczUUcqbciD9iLr095yj8DQKdObriEvuNSx325N1rV1O0sJFszx75g==}
     engines: {node: 14 || >=16.14}
+    dev: true
 
   /lru-cache@6.0.0:
     resolution: {integrity: sha512-Jo6dJ04CmSjuznwJSS3pUeWmd/H0ffTlkXXgwZi+eq1UCmqQwCh+eLsYOYCwY991i2Fah4h1BEMCx4qThGbsiA==}

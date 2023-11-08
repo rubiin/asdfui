@@ -6,7 +6,7 @@ export default defineConfig(
 		target: 'node16.20',
 		format: 'esm',
 		sourcemap: true,
-		minify: false,
+		minify: true,
 		shims: true,
 		// https://github.com/evanw/esbuild/issues/1921
 		banner: {
