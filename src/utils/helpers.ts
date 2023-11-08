@@ -16,7 +16,7 @@ export function formatPluginData(data: string[]) {
 	}));
 }
 
-export function totalNumber(start: string, installed: number, available?: number) {
+export function totalNumber(start: string, installed: unknown, available?: unknown) {
 	return available ? `${start} (${installed}/${available})` : `${start} (${installed})`;
 }
 

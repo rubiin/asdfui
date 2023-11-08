@@ -1,6 +1,6 @@
 {
 	"name": "asdfui",
-	"version": "0.1.18",
+	"version": "1.0.0",
 	"bin": "dist/cli.js",
 	"type": "module",
 	"description": "Experimental TUI for asdf vm",
@@ -45,6 +45,7 @@
 		"ink-select-input": "^5.0.0",
 		"install": "^0.13.0",
 		"is-online": "^10.0.0",
+		"lru-cache": "^10.0.1",
 		"react": "^18.2.0",
 		"zustand": "^4.4.6"
 	},

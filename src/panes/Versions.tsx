@@ -48,6 +48,7 @@ export function Versions() {
 		};
 
 		// TODO: set first version as selected version (BUG)
+		// TODO: show message after operation success
 
 		if (!isLocal) {
 			fetchToolsVersionsData();
@@ -60,23 +61,27 @@ export function Versions() {
 		if (isFocused) {
 			switch (input) {
 				case Keys.INSTALL: {
-					await installToolVersion({ name: currentlySelected.label, version: selectedVersion!.value }).then(async() => {
-						await Promise.all([getAllInfo(),getInstalledVersions(currentlySelected.label)])
-						setIsLocal(true);
-					});
+					await installToolVersion({ name: currentlySelected.label, version: selectedVersion!.value }).then(
+						async () => {
+							await Promise.all([getAllInfo(), getInstalledVersions(currentlySelected.label)]);
+							setIsLocal(true);
+						},
+					);
 					break;
 				}
 
 				case Keys.UNINSTALL: {
-					await uninstallToolVersion({ name: currentlySelected.label, version: selectedVersion!.value }).then(async() => {
-						await Promise.all([getAllInfo(),getInstalledVersions(currentlySelected.label)])
-					});
+					await uninstallToolVersion({ name: currentlySelected.label, version: selectedVersion!.value }).then(
+						async () => {
+							await Promise.all([getAllInfo(), getInstalledVersions(currentlySelected.label)]);
+						},
+					);
 					break;
 				}
 
 				case Keys.GLOBAL: {
-					await setVersionGlobal({ name: currentlySelected.label, version: selectedVersion!.value }).then(async() => {
-						await Promise.all([getAllInfo(),getInstalledVersions(currentlySelected.label)])
+					await setVersionGlobal({ name: currentlySelected.label, version: selectedVersion!.value }).then(async () => {
+						await Promise.all([getAllInfo(), getInstalledVersions(currentlySelected.label)]);
 					});
 					break;
 				}
@@ -100,7 +105,11 @@ export function Versions() {
 			paddingLeft={4}
 		>
 			<Title
-				label={totalNumber("Versions", installedVersions.length, availableVersions.length)}
+				label={totalNumber(
+					"Versions",
+					installedVersions.length,
+					availableVersions.length > 0 ? availableVersions.length : "-",
+				)}
 				color={getBorderColorOnFocus(isFocused)}
 			/>
 
