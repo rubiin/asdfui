@@ -38,7 +38,8 @@ export const installToolVersion = async ({ name, version }: VersionInfo): Promis
 
 export const uninstallToolVersion = async ({ name, version }: VersionInfo): Promise<boolean> => {
 	try {
-		await $`asdf uninstall ${name} ${version}`;
+
+		await $`asdf uninstall ${name} ${version.replace("🌎","").trim()}`;
 
 		return true;
 	} catch (error) {
