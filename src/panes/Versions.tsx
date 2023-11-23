@@ -2,7 +2,7 @@ import { Title } from "@components/index.js";
 import { Box, useFocus, useInput } from "ink";
 import React, { useEffect, useState } from "react";
 
-import { VersionsDisplay } from "@components/VersionsDisplay.js";
+import { VersionsDisplay } from "@components/index.js";
 import { useInfosStore, usePluginsStore, useVersionsStore } from "@stores/index.js";
 import {
 	getBorderColorOnFocus,

@@ -1,9 +1,8 @@
 import Select from "ink-select-input";
 import React from "react";
 import { Item } from "@utils/index.js";
-import { CustomAlert } from "./CustomAlert.js";
-import { CustomItem } from "./CustomSelectItem.js";
-import { Loader } from "./Loader.js";
+import { CustomAlert , CustomItem, Loader} from "./index.js";
+
 
 interface VersionsDisplayProps {
 	isOnline: boolean;
