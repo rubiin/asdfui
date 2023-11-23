@@ -1,8 +1,7 @@
 import { Box, Spacer, Text } from "ink";
 import React, { useEffect } from "react";
 import { useInfosStore } from "@stores/index.js";
-import { BorderColor } from "../types.js";
-import { totalNumber } from "@utils/index.js";
+import {BorderColor, totalNumber } from "@utils/index.js";
 import { Loader, CustomAlert, Title } from "@components/index.js";
 
 export function Info() {

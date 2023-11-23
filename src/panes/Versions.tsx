@@ -10,9 +10,9 @@ import {
 	setVersionGlobal,
 	totalNumber,
 	uninstallToolVersion,
+	Item,Keys
 } from "@utils/index.js";
 import isInternetAvailable from "is-online";
-import { Item, Keys } from "../types.js";
 
 export function Versions() {
 	const { isFocused } = useFocus({ id: "versions" });

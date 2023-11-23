@@ -1,6 +1,6 @@
 import { Box, Text } from "ink";
 import React from "react";
-import { GenericTextProp } from "../types.js";
+import { GenericTextProp } from "@utils/index.js";
 
 export function Title({ label, color }: GenericTextProp & { color: string }) {
 	return (

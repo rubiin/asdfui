@@ -1,6 +1,5 @@
 import { create } from "zustand";
-import { getInfo } from "@utils/index.js";
-import { VersionInfo } from "../types.js";
+import { getInfo, VersionInfo } from "@utils/index.js";
 
 interface InfoState {
 	versions: VersionInfo[];

@@ -1,6 +1,6 @@
 import { Box, Text } from "ink";
 import React from "react";
-import { GenericTextProp } from "../types.js";
+import { GenericTextProp } from "@utils/index.js";
 
 export function CustomItem({ label }: GenericTextProp) {
 	const [first, second] = label.split(" ");

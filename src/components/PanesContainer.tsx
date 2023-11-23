@@ -1,6 +1,6 @@
 import { Box, useApp, useInput } from "ink";
 import React from "react";
-import { Keys } from "../types.js";
+import { Keys } from "@utils/index.js";
 
 interface LayoutProps {
 	children: React.ReactNode;

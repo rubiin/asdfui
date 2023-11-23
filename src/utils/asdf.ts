@@ -2,7 +2,7 @@ import { $ } from "execa";
 
 import { Option } from "@inkjs/ui";
 import { formatPluginData, sanitizeData } from "./helpers.js";
-import { VersionInfo } from "../types.js";
+import { VersionInfo } from "./types.js";
 import fs from "node:fs";
 import os from "node:os";
 import readLine from "node:readline";

@@ -1,4 +1,4 @@
-import { BorderColor } from "../types.js";
+import { BorderColor } from "./types.js";
 
 const movementKeys = "[↑/↓] movement";
 const quitKey = "[q]uit";

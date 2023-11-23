@@ -1,7 +1,7 @@
 import { Spinner } from "@inkjs/ui";
 import { Box } from "ink";
 import React from "react";
-import { GenericTextProp } from "../types.js";
+import { GenericTextProp } from "@utils/index".js;
 
 export const Loader = ({ label }: GenericTextProp) => {
 	return (

@@ -1,6 +1,6 @@
 import Select from "ink-select-input";
 import React from "react";
-import { Item } from "../types.js";
+import { Item } from "@utils/index.js";
 import { CustomAlert } from "./CustomAlert.js";
 import { CustomItem } from "./CustomSelectItem.js";
 import { Loader } from "./Loader.js";
