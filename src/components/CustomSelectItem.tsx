@@ -7,7 +7,9 @@ export function CustomItem({ label }: GenericTextProp) {
 	return (
 		<Box gap={1}>
 			<Text>{first}</Text>
-			<Text color={"green"} bold>{second}</Text>
+			<Text color={"green"} bold>
+				{second}
+			</Text>
 		</Box>
 	);
 }

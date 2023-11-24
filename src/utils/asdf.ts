@@ -38,9 +38,7 @@ export const installToolVersion = async ({ name, version }: VersionInfo): Promis
 
 export const uninstallToolVersion = async ({ name, version }: VersionInfo): Promise<boolean> => {
 	try {
-
-		await $`asdf uninstall ${name} ${version.replace("🌎","").trim()}`;
-
+		await $`asdf uninstall ${name} ${version.replace("🌎", "").trim()}`;
 		return true;
 	} catch (error) {
 		return false;
@@ -51,7 +49,6 @@ export const getInfo = async (): Promise<VersionInfo[]> => {
 	try {
 		const { stdout } = await $`asdf current`;
 		const text = stdout.trim();
-
 		const lines = sanitizeData(text);
 		const extractedFields = lines.map((line) => {
 			const fields = line.trim().split(/\s+/);
@@ -66,7 +63,6 @@ export const getInfo = async (): Promise<VersionInfo[]> => {
 export const setVersionGlobal = async ({ name, version }: VersionInfo): Promise<boolean> => {
 	try {
 		await $`asdf global ${name} ${version}`;
-
 		return true;
 	} catch (error) {
 		return false;
@@ -117,6 +113,6 @@ export async function getGlobalVersionForTool(searchTerm: string) {
 
 		// Wait for close/error event and resolve/reject
 		lineReader.on("close", () => resolve(result));
-		lineReader.on("error", reject);
+		lineReader.on("error", () => reject(true));
 	});
 }

@@ -14,5 +14,5 @@ jobs:
           node-version: 18.x
           cache: pnpm
 
-      - run:  pnpm install
-      - run:  pnpm build
+      - run: pnpm install
+      - run: pnpm build

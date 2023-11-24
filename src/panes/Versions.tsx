@@ -10,7 +10,8 @@ import {
 	setVersionGlobal,
 	totalNumber,
 	uninstallToolVersion,
-	Item,Keys
+	Item,
+	Keys,
 } from "@utils/index.js";
 import isInternetAvailable from "is-online";
 
