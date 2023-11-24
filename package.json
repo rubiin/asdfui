@@ -30,7 +30,7 @@
 		"node": ">=18"
 	},
 	"scripts": {
-		"build": "rimraf dist && tsup",
+		"build": "rimraf dist && tsup src/index.ts --format esm,cjs --clean --dts",
 		"dev": "tsup --watch src/index.ts",
 		"lint": "ESLINT_USE_FLAT_CONFIG=true eslint '{src,test}/**/*.ts' --cache",
 		"lint:fix": "ESLINT_USE_FLAT_CONFIG=true eslint '{src,test}/**/*.ts' --cache --fix",
@@ -38,6 +38,14 @@
 		"release": "bumpp && npm publish",
 		"format": "prettier --write ."
 	},
+	"exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    }
+  },
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
 	"files": [
 		"dist"
 	],
