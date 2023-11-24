@@ -1,6 +1,6 @@
 {
 	"name": "asdfui",
-	"version": "1.0.8",
+	"version": "1.0.9",
 	"bin": "dist/index.js",
 	"type": "module",
 	"description": "Experimental TUI for asdf vm",
