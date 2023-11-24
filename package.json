@@ -1,6 +1,6 @@
 {
 	"name": "asdfui",
-	"version": "1.0.4",
+	"version": "1.0.5",
 	"bin": "dist/index.js",
 	"type": "module",
 	"description": "Experimental TUI for asdf vm",
@@ -39,13 +39,13 @@
 		"format": "prettier --write ."
 	},
 	"exports": {
-    ".": {
-      "import": "./dist/index.js",
-      "require": "./dist/index.cjs"
-    }
-  },
-  "main": "./dist/index.js",
-  "types": "./dist/index.d.ts",
+		".": {
+			"import": "./dist/index.js",
+			"require": "./dist/index.cjs"
+		}
+	},
+	"main": "./dist/index.js",
+	"types": "./dist/index.d.ts",
 	"files": [
 		"dist"
 	],
