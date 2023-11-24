@@ -1,6 +1,6 @@
 {
 	"name": "asdfui",
-	"version": "1.0.2",
+	"version": "1.0.3",
 	"bin": "dist/index.js",
 	"type": "module",
 	"description": "Experimental TUI for asdf vm",
@@ -12,9 +12,9 @@
 	"license": "MIT",
 	"homepage": "https://github.com/rubiin/asdfui#readme",
 	"repository": {
-    "type": "git",
-    "url": "https://github.com/rubiin/asdfui.git"
-  },
+		"type": "git",
+		"url": "https://github.com/rubiin/asdfui.git"
+	},
 	"bugs": "https://github.com/rubiin/asdfui/issues",
 	"keywords": [
 		"cli",
