@@ -12,5 +12,5 @@
 			"@stores/*": ["./src/stores/*"]
 		}
 	},
-	"include": ["src", "tsup.config.ts"]
+	"include": ["src"]
 }
