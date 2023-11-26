@@ -4,11 +4,13 @@ import { Item } from "@utils/index.js";
 import { CustomAlert, CustomItem, Loader } from "./index.js";
 
 interface VersionsDisplayProps {
-	isOnline: boolean;
-	isLocal: boolean;
 	isFocused: boolean;
-	pluginName: string;
+	isLocal: boolean;
 	isLoading: boolean;
+	isOnline: boolean;
+	showErrorMsg: boolean;
+	showSuccessMsg: boolean;
+	pluginName: string;
 	versions: Item<string>[];
 	setSelectedVersion: (value: Item<string>) => void;
 }
@@ -19,6 +21,8 @@ export const VersionsDisplay: React.FC<VersionsDisplayProps> = ({
 	isLocal,
 	isLoading,
 	pluginName,
+	showSuccessMsg,
+	showErrorMsg,
 	versions,
 	setSelectedVersion,
 }) => {
@@ -35,6 +39,8 @@ export const VersionsDisplay: React.FC<VersionsDisplayProps> = ({
 				/>
 			)}
 			{!isLoading && versions.length === 0 && <CustomAlert label={`No versions found for plugin ${pluginName}`} />}
+			{!showErrorMsg && <CustomAlert label="Operation failed" variant="error" />}
+			{!showSuccessMsg && <CustomAlert label="Operation successful" variant="success" />}
 			{!isOnline && !isLoading && <CustomAlert label="No internet" variant="error" />}
 		</>
 	);

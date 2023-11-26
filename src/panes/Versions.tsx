@@ -5,13 +5,13 @@ import React, { useEffect, useState } from "react";
 import { VersionsDisplay } from "@components/index.js";
 import { useInfosStore, usePluginsStore, useVersionsStore } from "@stores/index.js";
 import {
+	Item,
+	Keys,
 	getBorderColorOnFocus,
 	installToolVersion,
 	setVersionGlobal,
 	totalNumber,
 	uninstallToolVersion,
-	Item,
-	Keys,
 } from "@utils/index.js";
 import isInternetAvailable from "is-online";
 
@@ -20,14 +20,16 @@ export function Versions() {
 	const [selectedVersion, setSelectedVersion] = useState<Item<string>>();
 	const [isOnline, setIsOnline] = useState<boolean>(true);
 	const [isLocal, setIsLocal] = useState<boolean>(true);
+	const [showSuccessMsg, setShowSuccessMsg] = useState<boolean>(true);
+	const [showErrorMsg, setShowErrorMsg] = useState<boolean>(true);
 	const currentlySelected = usePluginsStore((state) => state.currentlySelected);
 	const getAvailabeVersions = useVersionsStore((state) => state.getAvailabeVersions);
 	const getInstalledVersions = useVersionsStore((state) => state.getInstalledVersions);
 	const getAllInfo = useInfosStore((state) => state.getAllInfo);
 
-	function handleState(item: Item<string>) {
+	const handleSelectedState = (item: Item<string>) => {
 		setSelectedVersion(item);
-	}
+	};
 
 	// for loader
 	const isLoading = useVersionsStore((state) => state.isLoading);
@@ -62,28 +64,39 @@ export function Versions() {
 		if (isFocused) {
 			switch (input) {
 				case Keys.INSTALL: {
-					await installToolVersion({ name: currentlySelected.label, version: selectedVersion!.value }).then(
-						async () => {
+					await installToolVersion({ name: currentlySelected.label, version: selectedVersion!.value })
+						.then(async () => {
 							await Promise.all([getAllInfo(), getInstalledVersions(currentlySelected.label)]);
 							setIsLocal(true);
-						},
-					);
+							setShowSuccessMsg(true);
+						})
+						.catch((_e) => {
+							setShowErrorMsg(true);
+						});
 					break;
 				}
 
 				case Keys.UNINSTALL: {
-					await uninstallToolVersion({ name: currentlySelected.label, version: selectedVersion!.value }).then(
-						async () => {
+					await uninstallToolVersion({ name: currentlySelected.label, version: selectedVersion!.value })
+						.then(async () => {
 							await Promise.all([getAllInfo(), getInstalledVersions(currentlySelected.label)]);
-						},
-					);
+							setShowSuccessMsg(true);
+						})
+						.catch((_e) => {
+							setShowErrorMsg(true);
+						});
 					break;
 				}
 
 				case Keys.GLOBAL: {
-					await setVersionGlobal({ name: currentlySelected.label, version: selectedVersion!.value }).then(async () => {
-						await Promise.all([getAllInfo(), getInstalledVersions(currentlySelected.label)]);
-					});
+					await setVersionGlobal({ name: currentlySelected.label, version: selectedVersion!.value })
+						.then(async () => {
+							await Promise.all([getAllInfo(), getInstalledVersions(currentlySelected.label)]);
+							setShowSuccessMsg(true);
+						})
+						.catch((_e) => {
+							setShowErrorMsg(true);
+						});
 					break;
 				}
 				case Keys.TOGGLE: {
@@ -99,8 +112,8 @@ export function Versions() {
 	return (
 		<Box
 			borderStyle="double"
-			borderColor={getBorderColorOnFocus(isFocused)}
 			flexDirection="column"
+			borderColor={getBorderColorOnFocus(isFocused)}
 			width="70%"
 			minHeight={20}
 			paddingLeft={4}
@@ -115,10 +128,12 @@ export function Versions() {
 			/>
 
 			<VersionsDisplay
-				setSelectedVersion={handleState}
+				setSelectedVersion={handleSelectedState}
 				isOnline={isOnline}
 				isFocused={isFocused}
 				isLoading={isLoading}
+				showSuccessMsg={showSuccessMsg}
+				showErrorMsg={showErrorMsg}
 				isLocal={isLocal}
 				versions={isLocal ? installedVersions : availableVersions}
 				pluginName={currentlySelected.label}

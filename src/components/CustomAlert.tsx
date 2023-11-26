@@ -12,6 +12,7 @@ export const CustomAlert: React.FC<CustomAlertProps> = (opts: CustomAlertProps) 
 		variant: "info",
 		...opts,
 	};
+
 	return (
 		<Box marginTop={1} marginRight={4}>
 			<Alert variant={options.variant as AlertProps["variant"]}>{options.label}</Alert>
