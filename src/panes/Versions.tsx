@@ -31,6 +31,13 @@ export function Versions() {
 		setSelectedVersion(item);
 	};
 
+	const toggleMessage = (type: "error" | "success") => {
+		type === "error"? setShowErrorMsg(!showErrorMsg): setShowSuccessMsg(!showSuccessMsg)
+		setTimeout(() => {
+			type === "error"? setShowErrorMsg(!showErrorMsg): setShowSuccessMsg(!showSuccessMsg)
+		}, 1500);
+	}
+
 	// for loader
 	const isLoading = useVersionsStore((state) => state.isLoading);
 
@@ -68,10 +75,10 @@ export function Versions() {
 						.then(async () => {
 							await Promise.all([getAllInfo(), getInstalledVersions(currentlySelected.label)]);
 							setIsLocal(true);
-							setShowSuccessMsg(true);
+							toggleMessage("success");
 						})
 						.catch((_e) => {
-							setShowErrorMsg(true);
+							toggleMessage("error");
 						});
 					break;
 				}
@@ -80,10 +87,10 @@ export function Versions() {
 					await uninstallToolVersion({ name: currentlySelected.label, version: selectedVersion!.value })
 						.then(async () => {
 							await Promise.all([getAllInfo(), getInstalledVersions(currentlySelected.label)]);
-							setShowSuccessMsg(true);
+							toggleMessage("success");
 						})
 						.catch((_e) => {
-							setShowErrorMsg(true);
+							toggleMessage("error");
 						});
 					break;
 				}
@@ -92,10 +99,10 @@ export function Versions() {
 					await setVersionGlobal({ name: currentlySelected.label, version: selectedVersion!.value })
 						.then(async () => {
 							await Promise.all([getAllInfo(), getInstalledVersions(currentlySelected.label)]);
-							setShowSuccessMsg(true);
+							toggleMessage("success");
 						})
 						.catch((_e) => {
-							setShowErrorMsg(true);
+							toggleMessage("error");
 						});
 					break;
 				}

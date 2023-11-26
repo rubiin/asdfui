@@ -39,9 +39,9 @@ export const VersionsDisplay: React.FC<VersionsDisplayProps> = ({
 				/>
 			)}
 			{!isLoading && versions.length === 0 && <CustomAlert label={`No versions found for plugin ${pluginName}`} />}
+			{!isOnline && !isLoading && <CustomAlert label="No internet" variant="error" />}
 			{!showErrorMsg && <CustomAlert label="Operation failed" variant="error" />}
 			{!showSuccessMsg && <CustomAlert label="Operation successful" variant="success" />}
-			{!isOnline && !isLoading && <CustomAlert label="No internet" variant="error" />}
 		</>
 	);
 };
