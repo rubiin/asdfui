@@ -1,9 +1,9 @@
 import { Spinner } from "@inkjs/ui";
 import { Box } from "ink";
 import React from "react";
-import { GenericTextProp } from "@utils/index.js";
+import { GenericTextProperty } from "@utils/index.js";
 
-export const Loader = ({ label }: GenericTextProp) => {
+export const Loader = ({ label }: GenericTextProperty) => {
 	return (
 		<Box padding={2}>
 			<Spinner type="dots" label={label} />

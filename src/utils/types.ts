@@ -1,33 +1,33 @@
 export enum BorderColor {
-	FOCUSED = "green",
-	UNFOCUSED = "white",
+  FOCUSED = 'green',
+  UNFOCUSED = 'white',
 }
 
 export enum Keys {
-	QUIT = "q",
-	INSTALL = "i",
-	UNINSTALL = "u",
-	GLOBAL = "g",
-	TOGGLE = "a",
+  QUIT = 'q',
+  INSTALL = 'i',
+  UNINSTALL = 'u',
+  GLOBAL = 'g',
+  TOGGLE = 'a',
 }
 
 export enum TabName {
-	PLUGINS,
-	VERSIONS,
-	GLOBAL,
+  PLUGINS,
+  VERSIONS,
+  GLOBAL,
 }
 
 export interface VersionInfo {
-	name: string;
-	version: string;
+  name: string
+  version: string
 }
 
-export type Item<V> = {
-	key?: string;
-	label: string;
-	value: V;
-};
+export interface Item<V> {
+  key?: string
+  label: string
+  value: V
+}
 
-export interface GenericTextProp {
-	label: string;
+export interface GenericTextProperty {
+  label: string
 }

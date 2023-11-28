@@ -1,6 +1,6 @@
-import rubiin from "@rubiin/eslint-config";
+import rubiin from "@antfu/eslint-config";
 
-export default rubiin(
+export default await  rubiin(
 	{
 		stylistic: true, // enable stylistic rules
 		yaml: true, // enable yaml rules,
@@ -8,7 +8,7 @@ export default rubiin(
 		markdown: true, // enable markdown rules
 		gitignore: true, // enable gitignore rules
 		typescript: {
-			tsconfigPath: "tsconfig.json", // path to tsconfig.json
+			tsconfigPath: 'tsconfig.json',
 		},
 	},
 	{

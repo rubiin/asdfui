@@ -1,8 +1,8 @@
 import { Box, Text } from "ink";
 import React from "react";
-import { GenericTextProp } from "@utils/index.js";
+import { GenericTextProperty } from "@utils/index.js";
 
-export function Title({ label, color }: GenericTextProp & { color: string }) {
+export function Title({ label, color }: GenericTextProperty & { color: string }) {
 	return (
 		<Box alignSelf="center" marginTop={-1}>
 			<Text bold color={color}>

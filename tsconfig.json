@@ -3,6 +3,8 @@
 	"compilerOptions": {
 		"outDir": "dist",
 		"baseUrl": ".",
+		"esModuleInterop": true,
+		"allowSyntheticDefaultImports": true,
 		"declaration": false,
 		"removeComments": true,
 		"paths": {
