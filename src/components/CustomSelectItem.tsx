@@ -2,7 +2,8 @@ import { Box, Text } from "ink";
 import React from "react";
 import { GenericTextProperty } from "@utils/index.js";
 
-export function CustomItem({ label }: GenericTextProperty) {
+	export const CustomItem: React.FC<GenericTextProperty> = ({ label }: GenericTextProperty) => {
+
 	const LineItem = ({ text }: { text: string }) => {
 		if (text.includes(" ")) {
 			const [first, second] = label.split(" ");
